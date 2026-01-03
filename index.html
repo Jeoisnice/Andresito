@@ -47,12 +47,9 @@
         .hero h1 { font-size: 4.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 900; background: linear-gradient(-45deg, #ff00cc, #3333ff, #d946ef, #00ffff); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer-text 6s ease infinite; text-shadow: 0 0 30px rgba(217, 70, 239, 0.3); }
         @keyframes shimmer-text { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         
-        /* Subtitulo Hero Vivo */
         .hero-subtitle {
             font-size: 1.5rem; color: var(--text-light); margin-bottom: 40px; max-width: 700px;
-            /* Glass bg sutil */
             background: rgba(255,255,255,0.05); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
-            /* Animación de entrada */
             animation: fadeUp 1s ease-out 0.5s backwards;
         }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -67,14 +64,12 @@
         .title-alive { background: linear-gradient(90deg, #fff, var(--primary), #fff); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: breathe-glow 3s infinite ease-in-out; }
         @keyframes breathe-glow { 0%, 100% { background-position: 0% 50%; transform: scale(1); filter: drop-shadow(0 0 0 transparent); } 50% { background-position: 100% 50%; transform: scale(1.05); filter: drop-shadow(0 0 10px var(--primary)); } }
 
-        /* --- BIOGRAFÍA (TEXTO CON VIDA) --- */
+        /* --- BIOGRAFÍA --- */
         .bio { background-color: var(--card-bg); position: relative; overflow: hidden; }
         .bio::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%); animation: pulse-bg 10s infinite; pointer-events: none; }
         @keyframes pulse-bg { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 0.8; } }
         .bio-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; padding: 40px; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px); box-shadow: 0 0 30px rgba(0,0,0,0.2); animation: float-bio 6s ease-in-out infinite; }
         @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); } }
-        
-        /* Palabras resaltadas en Bio */
         .highlight-text { color: transparent; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; font-weight: bold; }
 
         /* --- SERVICIOS --- */
@@ -105,7 +100,7 @@
         .hover-label { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); }
         .service-card:hover .hover-label { opacity: 1; }
 
-        /* --- NUEVA SECCIÓN DE PRECIOS (CATALOGO) --- */
+        /* --- PRECIOS --- */
         .pricing-section { background: #000; }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
         .pricing-column h3 { font-size: 1.8rem; margin-bottom: 25px; color: white; border-bottom: 2px solid; display: inline-block; padding-bottom: 5px; }
@@ -154,7 +149,7 @@
                 <a href="#" class="nav-social-btn nav-tt"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
-        <a href="https://waze.com/ul?q=Estudio+Etereo" target="_blank" class="btn-location">
+        <a href="https://waze.com/ul?ll=9.007902193808969,-79.50571668557593&navigate=yes" target="_blank" class="btn-location">
             <i class="fa-solid fa-map-location-dot"></i>
             <span>Ir con Waze</span>
         </a>
@@ -219,7 +214,6 @@
                 <div class="price-item"><span class="price-name">Corte + Barba (Combo)</span><span class="price-val">$25.00</span></div>
                 <div class="price-item"><span class="price-name">Diseño Tribal</span><span class="price-val">+$5.00</span></div>
             </div>
-
             <div class="pricing-column">
                 <h3 style="border-color: var(--primary);">Menú Salón</h3>
                 <div class="price-item"><span class="price-name">Corte de Dama</span><span class="price-val">$20.00</span></div>
