@@ -11,7 +11,7 @@
         :root {
             --primary: #d946ef; /* Rosa Neón */
             --secondary: #8b5cf6; /* Morado */
-            --accent-blue: #3b82f6;
+            --accent-blue: #3b82f6; /* Azul Neon */
             --dark-bg: #0f0f11;
             --card-bg: #18181b;
             --text-light: #f4f4f5;
@@ -23,7 +23,7 @@
         body { background-color: var(--dark-bg); color: var(--text-light); overflow-x: hidden; }
 
         /* --- NAVBAR --- */
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent); backdrop-filter: blur(5px); }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); backdrop-filter: blur(8px); }
         .nav-links-container { display: flex; align-items: center; gap: 30px; }
         .nav-link { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
         .nav-link:hover { color: var(--primary); }
@@ -39,9 +39,8 @@
 
         /* --- HERO --- */
         .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; padding-top: 80px; }
-        
-        @keyframes shimmer-text { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .hero h1 { font-size: 4.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 900; background: linear-gradient(-45deg, #ff00cc, #3333ff, #d946ef, #00ffff); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer-text 6s ease infinite; text-shadow: 0 0 30px rgba(217, 70, 239, 0.3); }
+        @keyframes shimmer-text { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         .hero p { font-size: 1.5rem; color: var(--text-gray); margin-bottom: 40px; max-width: 600px; }
         .btn-main { padding: 15px 45px; background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 800; cursor: pointer; text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .btn-main:hover { transform: scale(1.15) rotate(-2deg); background: linear-gradient(45deg, var(--secondary), var(--primary)); box-shadow: 0 0 30px var(--primary), 0 0 60px var(--secondary); letter-spacing: 2px; }
@@ -49,119 +48,157 @@
         /* --- SECCIONES COMUNES --- */
         .section-pad { padding: 100px 20px; }
         .text-center { text-align: center; }
-        .bio { background-color: var(--card-bg); }
-        .bio-content { max-width: 800px; margin: 0 auto; }
-        .section-title { font-size: 2.5rem; margin-bottom: 30px; border-bottom: 2px solid var(--primary); display: inline-block; padding-bottom: 10px; }
+        
+        /* Título de Sección con VIDA ("Nuestros Mundos") */
+        .section-title { font-size: 2.8rem; margin-bottom: 40px; display: inline-block; padding-bottom: 10px; position: relative; }
+        
+        /* Animación especial para el título "Nuestros Mundos" */
+        .title-alive {
+            background: linear-gradient(90deg, #fff, var(--primary), #fff);
+            background-size: 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: breathe-glow 3s infinite ease-in-out;
+        }
+        @keyframes breathe-glow {
+            0%, 100% { background-position: 0% 50%; transform: scale(1); filter: drop-shadow(0 0 0 transparent); }
+            50% { background-position: 100% 50%; transform: scale(1.05); filter: drop-shadow(0 0 10px var(--primary)); }
+        }
 
-        /* --- SERVICIOS & EFECTO SLIDESHOW (NUEVO) --- */
-        .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+        /* --- BIOGRAFÍA (CON MAS VIDA) --- */
+        .bio { background-color: var(--card-bg); position: relative; overflow: hidden; }
+        /* Fondo animado sutil */
+        .bio::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%);
+            animation: pulse-bg 10s infinite; pointer-events: none;
+        }
+        @keyframes pulse-bg { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 0.8; } }
+        
+        .bio-content { 
+            max-width: 800px; margin: 0 auto; position: relative; z-index: 2;
+            padding: 40px; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px;
+            background: rgba(0,0,0,0.3); backdrop-filter: blur(5px);
+            box-shadow: 0 0 30px rgba(0,0,0,0.2);
+            animation: float-bio 6s ease-in-out infinite;
+        }
+        @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); } }
+
+
+        /* --- SERVICIOS & BORDES NEON GIRATORIOS --- */
+        .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; /* Mas espacio para el borde */ }
 
         .service-card {
             position: relative; 
-            background: rgba(255, 255, 255, 0.03);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 50px 30px;
-            width: 100%;
-            max-width: 500px;
+            width: 100%; max-width: 500px; min-height: 400px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
             text-align: center;
-            overflow: hidden; 
-            transition: all 0.5s;
+            border-radius: 20px; /* Borde redondeado */
+            background: var(--card-bg); /* Fondo solido interior */
             z-index: 1;
-            /* Altura fija para evitar saltos */
-            min-height: 400px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+            transition: transform 0.3s;
         }
 
-        /* Contenido (Texto e Iconos) */
-        .card-content {
-            position: relative;
-            z-index: 10;
-            transition: opacity 0.4s ease;
+        /* === EL BORDE NEON GIRATORIO === */
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, transparent, transparent, var(--neon-color));
+            animation: rotate-border 4s linear infinite;
+            z-index: -2;
+        }
+        
+        .service-card::after {
+            content: '';
+            position: absolute;
+            inset: 4px; /* Grosor del borde (4px) */
+            background: var(--card-bg); /* Tapa el centro para dejar solo el borde */
+            border-radius: 16px;
+            z-index: -1;
         }
 
-        .barber-card:hover { transform: translateY(-15px); border-color: var(--accent-blue); }
-        .salon-card:hover { transform: translateY(-15px); border-color: var(--primary); }
+        @keyframes rotate-border { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
 
+        /* Colores especificos del neon */
+        .barber-card { --neon-color: var(--accent-blue); }
+        .salon-card { --neon-color: var(--primary); }
+
+        /* Ajustes internos */
+        .service-card { overflow: hidden; } /* Para cortar el borde sobrante */
+        .card-content { position: relative; z-index: 10; padding: 40px; transition: opacity 0.4s ease; }
+
+        /* Iconos y Textos */
         .service-icon { font-size: 5rem; margin-bottom: 25px; transition: 0.5s; display: inline-block;}
         .barber-icon { color: var(--accent-blue); }
         .salon-icon { color: var(--primary); }
-
-        /* Efecto Brillo Icono */
-        @keyframes shine-icon { 0% { background-position: -100%; } 100% { background-position: 200%; } }
-        .service-card:hover .service-icon { background: linear-gradient(to right, currentColor 0%, white 50%, currentColor 100%); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: shine-icon 1s linear infinite; transform: scale(1.1); }
-        
         .service-card h3 { font-size: 1.8rem; margin-bottom: 15px; }
         .service-card p { color: var(--text-gray); font-size: 1.1rem; }
 
-        /* === LÓGICA DEL SLIDESHOW (CARRUSEL AL PASAR MOUSE) === */
+        /* === SLIDESHOW (Las fotos que corren) === */
+        /* Aseguramos que las fotos esten detras del contenido pero delante del fondo negro */
+        .slideshow-container { position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px; z-index: 0; pointer-events: none; border-radius: 16px; overflow: hidden; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: transform 6s linear; }
+
+        /* Fotos Barber */
+        .slide-b1 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); }
+        .slide-b2 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000&auto=format&fit=crop'); }
+        .slide-b3 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); }
+        .slide-b4 { background-image: url('https://images.unsplash.com/photo-1605497788044-5a90406432b5?q=80&w=2000&auto=format&fit=crop'); }
         
-        /* Contenedor de las imagenes de fondo */
-        .slideshow-container {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            z-index: 1; /* Detrás del texto si quisiéramos, pero aquí lo taparemos */
-            pointer-events: none;
-        }
+        /* Fotos Salon */
+        .slide-s1 { background-image: url('https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=2000&auto=format&fit=crop'); } 
+        .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
+        .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
 
-        .slide {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0; /* Invisibles por defecto */
-            transition: transform 6s linear; /* Zoom lento */
-        }
+        /* Animaciones Fade */
+        @keyframes galleryFade3 { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
+        @keyframes galleryFade4 { 0% { opacity: 0; } 10% { opacity: 1; } 25% { opacity: 1; } 35% { opacity: 0; } 100% { opacity: 0; } }
 
-        /* Definimos las 3 imágenes del catálogo */
-        .slide1 { background-image: url('https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=2000&auto=format&fit=crop'); } /* Tinte/Pelo */
-        .slide2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } /* Maquillaje */
-        .slide3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } /* Estilismo */
+        /* Triggers Hover */
+        .service-card:hover .card-content { opacity: 0; }
+        .service-card:hover .slide { transform: scale(1.1); }
+        .salon-card:hover .slide { animation: galleryFade3 9s infinite; }
+        .salon-card:hover .slide-s1 { animation-delay: 0s; } .salon-card:hover .slide-s2 { animation-delay: 3s; } .salon-card:hover .slide-s3 { animation-delay: 6s; }
+        .barber-card:hover .slide { animation: galleryFade4 12s infinite; }
+        .barber-card:hover .slide-b1 { animation-delay: 0s; } .barber-card:hover .slide-b2 { animation-delay: 3s; } .barber-card:hover .slide-b3 { animation-delay: 6s; } .barber-card:hover .slide-b4 { animation-delay: 9s; }
 
-        /* Animación para cambiar de foto (Keyframes) */
-        @keyframes galleryFade {
-            0% { opacity: 0; }
-            10% { opacity: 1; }
-            33% { opacity: 1; } /* Se queda visible un rato */
-            43% { opacity: 0; }
-            100% { opacity: 0; }
-        }
-
-        /* Cuando pasas el mouse sobre la tarjeta... */
-        .salon-card:hover .card-content {
-            opacity: 0; /* El texto desaparece suavemente */
-        }
-
-        .salon-card:hover .slide {
-            animation: galleryFade 9s infinite; /* Inicia la animación de 9 segundos en bucle */
-            transform: scale(1.1); /* Efecto zoom */
-        }
-
-        /* Tiempos para que salgan una detrás de otra */
-        .salon-card:hover .slide1 { animation-delay: 0s; }
-        .salon-card:hover .slide2 { animation-delay: 3s; }
-        .salon-card:hover .slide3 { animation-delay: 6s; }
-
-        /* Etiqueta "Ver Catálogo" que aparece */
-        .salon-card::after {
-            content: 'EXPLORANDO CATÁLOGO...';
+        /* Etiqueta Ver Servicios */
+        .service-card::after-label { /* Pseudo elemento hack para etiqueta */
+            content: 'VER SERVICIOS'; position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20;
+        } 
+        /* Usamos un div real para esto mejor */
+        .hover-label {
             position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);
             color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 2px;
-            background: rgba(0,0,0,0.5); padding: 5px 15px; border-radius: 20px;
-            opacity: 0; transition: 0.3s; z-index: 20;
+            background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 20px;
+            opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3);
         }
-        .salon-card:hover::after { opacity: 1; }
+        .service-card:hover .hover-label { opacity: 1; }
 
 
-        /* --- GALERÍA, CONTACTO --- */
+        /* --- GALERÍA VIVA (CINEMATICA) --- */
         .gallery { background-color: var(--card-bg); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 40px 0; max-width: 1200px; margin: 0 auto; }
-        .gallery-item { height: 300px; border-radius: 15px; overflow: hidden; }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; }
-        .gallery-item:hover img { transform: scale(1.1); }
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px 0; max-width: 1200px; margin: 0 auto; }
+        
+        .gallery-item { 
+            height: 350px; border-radius: 15px; overflow: hidden; position: relative; 
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+        
+        .gallery-item img { 
+            width: 100%; height: 100%; object-fit: cover; 
+            /* Animación constante "viva" */
+            animation: pan-image 15s infinite alternate linear;
+        }
+        
+        /* Efecto de paneo y zoom lento (como video) */
+        @keyframes pan-image {
+            0% { transform: scale(1) translate(0, 0); }
+            50% { transform: scale(1.15) translate(-2%, -2%); }
+            100% { transform: scale(1) translate(2%, 2%); }
+        }
+
         .contact-container { max-width: 1000px; margin: 0 auto; }
         .social-links-big { display: flex; justify-content: center; gap: 20px; margin-bottom: 40px; }
         .social-btn-big { width: 60px; height: 60px; border-radius: 50%; background: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; text-decoration: none; transition: 0.3s; }
@@ -209,45 +246,64 @@
 
     <section class="section-pad bio text-center">
         <div class="bio-content">
-            <h2 class="section-title">Nuestra Esencia</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-gray);">
-                Somos un espacio creativo dedicado a la belleza moderna. En Estudio Etéreo fusionamos las técnicas clásicas de barbería con las tendencias más virales de color y estilismo.
+            <h2 class="section-title" style="border-bottom: 2px solid var(--secondary);">Nuestra Esencia</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light); text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+                Somos un espacio creativo dedicado a la belleza moderna. En Estudio Etéreo fusionamos las técnicas clásicas de barbería con las tendencias más virales de color y estilismo. Más que un salón, somos el lugar donde tu imagen se reinventa.
             </p>
         </div>
     </section>
 
     <section class="section-pad text-center" id="servicios">
-        <h2 class="section-title">Nuestros Mundos</h2>
+        <h2 class="section-title title-alive">Nuestros Mundos</h2>
+        
         <div class="services">
             
             <div class="service-card barber-card">
+                <div class="slideshow-container">
+                    <div class="slide slide-b1"></div>
+                    <div class="slide slide-b2"></div>
+                    <div class="slide slide-b3"></div>
+                    <div class="slide slide-b4"></div>
+                </div>
+                
                 <div class="card-content">
                     <i class="fa-solid fa-scissors service-icon barber-icon"></i>
                     <h3>Zona Barbería</h3>
-                    <p>Cortes Fade, arreglos de barba con toalla caliente, diseños tribales y perfilado de cejas.</p>
+                    <p>Cortes Fade, arreglos de barba con toalla caliente, perfilado de cejas y Buzz Cuts modernos.</p>
                 </div>
+                <div class="hover-label">Ver Catálogo</div>
             </div>
 
             <div class="service-card salon-card">
                 <div class="slideshow-container">
-                    <div class="slide slide1"></div> <div class="slide slide2"></div> <div class="slide slide3"></div> </div>
+                    <div class="slide slide-s1"></div>
+                    <div class="slide slide-s2"></div>
+                    <div class="slide slide-s3"></div>
+                </div>
                 
                 <div class="card-content">
                     <i class="fa-solid fa-wand-magic-sparkles service-icon salon-icon"></i>
                     <h3>Estudio de Belleza</h3>
-                    <p>Apúntame para ver nuestro catálogo exclusivo de estilos.</p>
+                    <p>Colorimetría, balayage, tratamientos de hidratación profunda y maquillaje para eventos.</p>
                 </div>
+                <div class="hover-label">Ver Catálogo</div>
             </div>
 
         </div>
     </section>
 
     <section class="section-pad gallery text-center">
-        <h2 class="section-title">Galería de Estilos</h2>
+        <h2 class="section-title" style="color: white; border-bottom: 2px solid white;">Galería de Estilos</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop" alt="Corte 1"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop" alt="Corte 2"></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522337360705-8763d84a783a?q=80&w=2074&auto=format&fit=crop" alt="Corte 3"></div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop" alt="Corte 1">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop" alt="Corte 2">
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1521590832896-724613fa0477?q=80&w=1976&auto=format&fit=crop" alt="Corte 3">
+            </div>
         </div>
     </section>
 
