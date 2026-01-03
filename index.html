@@ -44,7 +44,6 @@
         /* --- HERO --- */
         .hero { 
             height: 100vh; 
-            /* NUEVA FOTO DE PORTADA EN ARMONÍA (Tonos morados/oscuros) */
             background: linear-gradient(rgba(0,0,0,0.3), #0f0f11), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2069&auto=format&fit=crop'); 
             background-size: cover; 
             background-position: center; 
@@ -79,7 +78,7 @@
         @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); } }
         .highlight-text { color: transparent; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; font-weight: bold; }
 
-        /* --- CARDS (Servicios y Galería) --- */
+        /* --- CARDS --- */
         .services, .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
         .gallery-grid { margin-top: 40px; }
 
@@ -91,7 +90,6 @@
             transition: transform 0.3s; overflow: hidden; 
         }
         
-        /* Borde Neón */
         .service-card::before, .gallery-card::before { 
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; 
             background: conic-gradient(transparent, transparent, transparent, var(--neon-color)); 
@@ -102,7 +100,6 @@
         }
         @keyframes rotate-border { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* Colores */
         .barber-card, .gallery-card-3 { --neon-color: var(--accent-blue); } 
         .salon-card, .gallery-card-2 { --neon-color: var(--primary); }
         .gallery-card-1 { --neon-color: var(--secondary); } 
@@ -117,10 +114,9 @@
         .card-content h3 { font-size: 1.6rem; margin-bottom: 10px; } 
         .card-content p { color: var(--text-gray); font-size: 1rem; }
 
-        /* --- SLIDESHOW (ARREGLADO) --- */
+        /* --- SLIDESHOW (CORREGIDO PARA VISIBILIDAD) --- */
         .slideshow-container { position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px; z-index: 0; pointer-events: none; border-radius: 16px; overflow: hidden; }
         
-        /* Por defecto: Opacidad 0 */
         .slide { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
             background-size: cover; background-position: center; 
@@ -128,10 +124,10 @@
             transition: transform 6s linear, opacity 1s; 
         }
 
-        /* ARREGLO VISUAL: La primera imagen de cada grupo siempre visible por defecto */
+        /* IMPORTANTE: La primera imagen siempre visible por defecto */
         .slide:first-child { opacity: 1; }
 
-        /* FOTOS SERVICIOS (Barbería y Salón) */
+        /* FOTOS SERVICIOS */
         .slide-b1 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); }
         .slide-b2 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000&auto=format&fit=crop'); }
         .slide-b3 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); }
@@ -141,23 +137,22 @@
         .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
         
-        /* FOTOS GALERÍA (NUEVOS ENLACES FUNCIONALES) */
-        /* Si quieres usar tus fotos, cambia la url por 'nombre-de-tu-foto.jpg' */
+        /* --- FOTOS GALERÍA (ENLACES CORREGIDOS) --- */
         
-        /* G1: Tendencias Urbanas */
-        .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1593487568720-92097fb46089?q=80&w=2070&auto=format&fit=crop'); } /* Estilo Urbano 1 */
-        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1588267691266-105379362441?q=80&w=1974&auto=format&fit=crop'); } /* Estilo Urbano 2 */
-        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1972&auto=format&fit=crop'); } /* Estilo Urbano 3 */
+        /* G1: Tendencias Urbanas (Estilos de barba y corte) */
+        .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop'); } /* Barba 1 */
+        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1593487568720-92097fb46089?q=80&w=2070&auto=format&fit=crop'); } /* Estilo 2 */
+        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1605497788044-5a90406432b5?q=80&w=2000&auto=format&fit=crop'); } /* Estilo 3 */
         
-        /* G2: Color & Luminosidad */
-        .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop'); } /* Color 1 */
-        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1608245449230-407a28e80200?q=80&w=1974&auto=format&fit=crop'); } /* Color 2 */
-        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); } /* Color 3 */
+        /* G2: Color & Luminosidad (Chica Sola 1ro + Nuevas) */
+        .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop'); } /* CHICA SOLA (1RO) */
+        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop'); } /* Anterior 1ro (2DO) */
+        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); } /* Anterior 2do (3RO) */
         
-        /* G3: Perfilado & Precisión */
-        .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000&auto=format&fit=crop'); } /* Fade 1 */
-        .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); } /* Fade 2 */
-        .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); } /* Fade 3 */
+        /* G3: Perfilado & Precisión (Nuevas fotos de cortes definidos) */
+        .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); } /* Perfilado 1 */
+        .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); } /* Perfilado 2 */
+        .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1972&auto=format&fit=crop'); } /* Perfilado 3 */
 
         /* Animaciones */
         @keyframes galleryFade3 { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
@@ -165,7 +160,7 @@
         
         .service-card:hover .slide, .gallery-card:hover .slide { transform: scale(1.1); }
         
-        /* Aplicar animación AL PASAR EL MOUSE (Hover) */
+        /* Hover Triggers */
         .salon-card:hover .slide { animation: galleryFade3 9s infinite; } 
         .salon-card:hover .slide-s1 { animation-delay: 0s; } .salon-card:hover .slide-s2 { animation-delay: 3s; } .salon-card:hover .slide-s3 { animation-delay: 6s; }
         
