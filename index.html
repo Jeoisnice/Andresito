@@ -55,18 +55,18 @@
         .hero-subtitle { font-size: 1.5rem; color: var(--text-light); margin-bottom: 40px; max-width: 700px; background: rgba(255,255,255,0.05); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); animation: fadeUp 1s ease-out 0.5s backwards; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* Botón Principal (Corregido para móvil) */
+        /* Botón Principal */
         .btn-main { padding: 15px 45px; background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 800; cursor: pointer; text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10; white-space: nowrap; }
         .btn-main:hover { transform: scale(1.15) rotate(-2deg); background: linear-gradient(45deg, var(--secondary), var(--primary)); box-shadow: 0 0 30px var(--primary), 0 0 60px var(--secondary); letter-spacing: 2px; }
 
-        /* --- ONDAS (CORREGIDAS PARA COLOR) --- */
+        /* --- ONDAS (CORREGIDAS) --- */
         .wave-container { position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg); }
         .wave-container svg { position: relative; display: block; width: calc(133% + 1.3px); height: 110px; }
         
         .wave-container-top { position: absolute; top: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; z-index: 1; }
         .wave-container-top svg { display: block; width: calc(100% + 1.3px); height: 90px; }
         
-        /* Colores específicos para las ondas */
+        /* Colores específicos para las ondas para evitar descolores */
         .fill-dark { fill: var(--dark-bg); }
         .fill-black { fill: var(--black-bg); }
 
@@ -92,7 +92,7 @@
             position: relative; width: 100%; max-width: 400px; min-height: 500px; 
             display: flex; flex-direction: column; justify-content: flex-end; 
             align-items: center; text-align: center; border-radius: 30px; 
-            background: var(--card-bg); /* CORRECCIÓN DE COLOR AQUÍ */
+            background: var(--card-bg);
             z-index: 1; 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); cursor: pointer;
         }
@@ -124,18 +124,18 @@
         .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
         
-        /* --- FOTOS GALERÍA (REPARADAS) --- */
+        /* --- FOTOS GALERÍA (REPARADAS Y NUEVAS) --- */
         .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1520338661084-680395057c93?q=80&w=2070&auto=format&fit=crop'); } 
-        /* REPARADA G1-2 */ .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1504945556753-585476895f7a?q=80&w=1974&auto=format&fit=crop'); }
-        /* REPARADA G1-3 */ .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1560889272-f26534d02261?q=80&w=2070&auto=format&fit=crop'); }
+        /* REPARADA G1-2 (Corte moderno textura) */ .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1605497788044-5a90406432b5?q=80&w=2070&auto=format&fit=crop'); }
+        /* REPARADA G1-3 (Barba y corte nítido) */ .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); }
         
         .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); }
-        /* REPARADA G2-2 */ .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1523359366921-4c14294ff5a4?q=80&w=1974&auto=format&fit=crop'); }
-        /* REPARADA G2-3 */ .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?q=80&w=1974&auto=format&fit=crop'); }
+        /* REPARADA G2-2 (Color vibrante rojizo) */ .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2069&auto=format&fit=crop'); }
+        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=2071&auto=format&fit=crop'); }
         
         .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=2070&auto=format&fit=crop'); } 
-        .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop'); }
-        .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1593702295094-aea8c5c13d7b?q=80&w=2000&auto=format&fit=crop'); }
+        /* REPARADA G3-2 (Perfilado barba) */ .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); }
+        /* REPARADA G3-3 (Afeitado toalla) */ .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop'); }
 
         @keyframes galleryFade3 { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
         @keyframes galleryFade4 { 0% { opacity: 0; } 10% { opacity: 1; } 25% { opacity: 1; } 35% { opacity: 0; } 100% { opacity: 0; } }
@@ -143,8 +143,10 @@
         .salon-card:hover .slide { animation: galleryFade3 9s infinite; } .salon-card:hover .slide-s1 { animation-delay: 0s; } .salon-card:hover .slide-s2 { animation-delay: 3s; } .salon-card:hover .slide-s3 { animation-delay: 6s; }
         .barber-card:hover .slide { animation: galleryFade4 12s infinite; } .barber-card:hover .slide-b1 { animation-delay: 0s; } .barber-card:hover .slide-b2 { animation-delay: 3s; } .barber-card:hover .slide-b3 { animation-delay: 6s; } .barber-card:hover .slide-b4 { animation-delay: 9s; }
         .gallery-card:hover .slide { animation: galleryFade3 9s infinite; } .gallery-card-1:hover .slide-g1-1 { animation-delay: 0s; } .gallery-card-1:hover .slide-g1-2 { animation-delay: 3s; } .gallery-card-1:hover .slide-g1-3 { animation-delay: 6s; } .gallery-card-2:hover .slide-g2-1 { animation-delay: 0s; } .gallery-card-2:hover .slide-g2-2 { animation-delay: 3s; } .gallery-card-2:hover .slide-g2-3 { animation-delay: 6s; } .gallery-card-3:hover .slide-g3-1 { animation-delay: 0s; } .gallery-card-3:hover .slide-g3-2 { animation-delay: 3s; } .gallery-card-3:hover .slide-g3-3 { animation-delay: 6s; }
+        
+        /* ELIMINADO EL CSS DEL HOVER-LABEL "VER MÁS" */
         .hover-label { position: absolute; top: 20px; right: 20px; color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.6); padding: 8px 18px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); font-size: 0.85rem; backdrop-filter: blur(5px); }
-        .service-card:hover .hover-label, .gallery-card:hover .hover-label { opacity: 1; transform: translateY(5px); }
+        .service-card:hover .hover-label { opacity: 1; transform: translateY(5px); }
 
         .pricing-section { background-color: var(--black-bg); position: relative; }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
@@ -316,40 +318,32 @@
             <div class="gallery-card gallery-card-1">
                 <div class="slideshow-container">
                     <div class="slide slide-g1-1"></div>
-                    <div class="slide slide-g1-2"></div>
-                    <div class="slide slide-g1-3"></div>
-                </div>
+                    <div class="slide slide-g1-2"></div> <div class="slide slide-g1-3"></div> </div>
                 <div class="card-content">
                     <h3 class="title-alive" style="--primary: var(--secondary)">Tendencias Urbanas</h3>
                     <p>Estilos modernos y versátiles. Texturas naturales, cortes crop y diseños con movimiento.</p>
                 </div>
-                <div class="hover-label">Ver Más</div>
             </div>
 
             <div class="gallery-card gallery-card-2">
                 <div class="slideshow-container">
                     <div class="slide slide-g2-1"></div>
-                    <div class="slide slide-g2-2"></div>
-                    <div class="slide slide-g2-3"></div>
+                    <div class="slide slide-g2-2"></div> <div class="slide slide-g2-3"></div>
                 </div>
                 <div class="card-content">
                     <h3 class="title-alive">Color & Luminosidad</h3>
                     <p>Técnicas avanzadas de coloración. Desde balayage sutil hasta tonos fantasía vibrantes.</p>
                 </div>
-                <div class="hover-label">Ver Más</div>
             </div>
 
             <div class="gallery-card gallery-card-3">
                 <div class="slideshow-container">
                     <div class="slide slide-g3-1"></div>
-                    <div class="slide slide-g3-2"></div>
-                    <div class="slide slide-g3-3"></div>
-                </div>
+                    <div class="slide slide-g3-2"></div> <div class="slide slide-g3-3"></div> </div>
                 <div class="card-content">
                     <h3 class="title-alive" style="--primary: var(--accent-blue)">Perfilado & Precisión</h3>
                     <p>Acabados impecables con navaja y ritual de toalla caliente. La excelencia en cuidado masculino.</p>
                 </div>
-                <div class="hover-label">Ver Más</div>
             </div>
 
         </div>
@@ -381,6 +375,7 @@
                     <span>Contactar WhatsApp</span>
                 </a>
                 <br>
+                
                 <a href="https://waze.com/ul?ll=9.007902193808969,-79.50571668557593&navigate=yes" target="_blank" class="waze-btn-small">Ir ahora</a>
             </div>
         </div>
