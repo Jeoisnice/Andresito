@@ -59,11 +59,11 @@
         .btn-main { padding: 15px 45px; background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 800; cursor: pointer; text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10; white-space: nowrap; }
         .btn-main:hover { transform: scale(1.15) rotate(-2deg); background: linear-gradient(45deg, var(--secondary), var(--primary)); box-shadow: 0 0 30px var(--primary), 0 0 60px var(--secondary); letter-spacing: 2px; }
 
-        /* --- ONDAS (CORREGIDAS - SOLUCIÓN BORDE GRIS) --- */
+        /* --- ONDAS (AJUSTADAS PARA CONEXIÓN PERFECTA) --- */
         .wave-container { 
             position: absolute; 
-            bottom: -2px; /* SOLUCIÓN: Empujamos la onda hacia abajo para tapar la línea gris */
-            left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg); 
+            bottom: -2px;
+            left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg); z-index: 1;
         }
         .wave-container svg { position: relative; display: block; width: calc(133% + 1.3px); height: 110px; }
         
@@ -128,22 +128,16 @@
         .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
         
-        /* --- FOTOS GALERÍA (ACTUALIZADAS Y FUNCIONALES) --- */
-        
-        /* G1: Tendencias Urbanas */
+        /* --- FOTOS GALERÍA --- */
         .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1520338661084-680395057c93?q=80&w=2070&auto=format&fit=crop'); } 
-        /* NUEVA G1-2 */ .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1620332372374-f108c5cb60cc?q=80&w=2070&auto=format&fit=crop'); }
-        /* NUEVA G1-3 */ .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1605497788044-5a90406432b5?q=80&w=2070&auto=format&fit=crop'); }
-        
-        /* G2: Color & Luminosidad */
+        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1620332372374-f108c5cb60cc?q=80&w=2070&auto=format&fit=crop'); }
+        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1605497788044-5a90406432b5?q=80&w=2070&auto=format&fit=crop'); }
         .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); }
-        /* NUEVA G2-2 */ .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1596455607563-ad6193f76b17?q=80&w=2070&auto=format&fit=crop'); }
-        /* YA REPARADA G2-3 */ .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=2071&auto=format&fit=crop'); }
-        
-        /* G3: Perfilado & Precisión */
+        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1596455607563-ad6193f76b17?q=80&w=2070&auto=format&fit=crop'); }
+        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=2071&auto=format&fit=crop'); }
         .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=2070&auto=format&fit=crop'); } 
-        /* NUEVA G3-2 */ .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop'); }
-        /* NUEVA G3-3 */ .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1593702295094-aea8c5c13d7b?q=80&w=2000&auto=format&fit=crop'); }
+        .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop'); }
+        .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1593702295094-aea8c5c13d7b?q=80&w=2000&auto=format&fit=crop'); }
 
         @keyframes galleryFade3 { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
         @keyframes galleryFade4 { 0% { opacity: 0; } 10% { opacity: 1; } 25% { opacity: 1; } 35% { opacity: 0; } 100% { opacity: 0; } }
@@ -269,7 +263,6 @@
                 </div>
                 <div class="hover-label">Ver Precios</div>
             </div>
-            
             <div class="service-card salon-card" onclick="scrollToPrice('columna-salon', 'var(--primary)')">
                 <div class="slideshow-container"><div class="slide slide-s1"></div> <div class="slide slide-s2"></div> <div class="slide slide-s3"></div></div>
                 <div class="card-content">
@@ -281,14 +274,15 @@
             </div>
         </div>
         
-        <div class="wave-container">
-             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill fill-black"></path>
-            </svg>
-        </div>
-    </section>
+        </section>
 
     <section class="section-pad pricing-section text-center" id="precios">
+        <div class="wave-container-top">
+             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill fill-dark"></path>
+            </svg>
+        </div>
+
         <h2 class="section-title" style="color: white; text-shadow: 0 0 20px rgba(255,255,255,0.5);">Inversión en Ti</h2>
         <div class="pricing-grid">
             <div class="pricing-column" id="columna-barberia" style="border-radius: 20px; padding: 20px; transition: 0.3s;">
@@ -299,7 +293,6 @@
                 <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20Combo%20Corte%20+%20Barba" target="_blank" class="price-item"><span class="price-name">Corte + Barba (Combo)</span><span class="price-val">$25.00</span></a>
                 <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20un%20Diseño%20Tribal" target="_blank" class="price-item"><span class="price-name">Diseño Tribal</span><span class="price-val">+$5.00</span></a>
             </div>
-            
             <div class="pricing-column" id="columna-salon" style="border-radius: 20px; padding: 20px; transition: 0.3s;">
                 <h3 style="color: var(--primary); text-shadow: 0 0 15px var(--primary);">Menú Salón</h3>
                 <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20un%20Corte%20de%20Dama" target="_blank" class="price-item"><span class="price-name">Corte de Dama</span><span class="price-val">$20.00</span></a>
@@ -309,53 +302,54 @@
                 <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20Maquillaje%20Social" target="_blank" class="price-item"><span class="price-name">Maquillaje Social</span><span class="price-val">$45.00</span></a>
             </div>
         </div>
+
+        <div class="wave-container">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill fill-dark"></path>
+            </svg>
+        </div>
     </section>
 
     <section class="section-pad gallery-section text-center">
-        <div class="wave-container-top">
-             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill fill-black"></path>
-            </svg>
-        </div>
-
         <h2 class="section-title gallery-title-3d">Galería de Estilos</h2>
         <div class="gallery-grid">
-            
             <div class="gallery-card gallery-card-1">
                 <div class="slideshow-container">
                     <div class="slide slide-g1-1"></div>
-                    <div class="slide slide-g1-2"></div> <div class="slide slide-g1-3"></div> </div>
+                    <div class="slide slide-g1-2"></div>
+                    <div class="slide slide-g1-3"></div>
+                </div>
                 <div class="card-content">
                     <h3 class="title-alive" style="--primary: var(--secondary)">Tendencias Urbanas</h3>
                     <p>Estilos modernos y versátiles. Texturas naturales, cortes crop y diseños con movimiento.</p>
                 </div>
             </div>
-
             <div class="gallery-card gallery-card-2">
                 <div class="slideshow-container">
                     <div class="slide slide-g2-1"></div>
-                    <div class="slide slide-g2-2"></div> <div class="slide slide-g2-3"></div>
+                    <div class="slide slide-g2-2"></div>
+                    <div class="slide slide-g2-3"></div>
                 </div>
                 <div class="card-content">
                     <h3 class="title-alive">Color & Luminosidad</h3>
                     <p>Técnicas avanzadas de coloración. Desde balayage sutil hasta tonos fantasía vibrantes.</p>
                 </div>
             </div>
-
             <div class="gallery-card gallery-card-3">
                 <div class="slideshow-container">
                     <div class="slide slide-g3-1"></div>
-                    <div class="slide slide-g3-2"></div> <div class="slide slide-g3-3"></div> </div>
+                    <div class="slide slide-g3-2"></div>
+                    <div class="slide slide-g3-3"></div>
+                </div>
                 <div class="card-content">
                     <h3 class="title-alive" style="--primary: var(--accent-blue)">Perfilado & Precisión</h3>
                     <p>Acabados impecables con navaja y ritual de toalla caliente. La excelencia en cuidado masculino.</p>
                 </div>
             </div>
-
         </div>
         <div class="wave-container">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill fill-dark"></path>
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill fill-dark"></path>
             </svg>
         </div>
     </section>
@@ -373,15 +367,12 @@
                 <i class="fa-solid fa-location-dot location-icon-anim"></i>
                 <h3>Ubicación Estratégica</h3>
                 <p style="margin-top: 10px; color: var(--text-gray); font-size: 1.1rem;">Costado del Restaurante Waikiki</p>
-                
                 <p style="margin-top: 5px; font-weight: bold; color: white; font-size: 1.2rem;">Tel: 6669-0578</p>
-                
                 <a href="https://wa.me/50766690578" target="_blank" class="btn-wa-inline">
                     <i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
                     <span>Contactar WhatsApp</span>
                 </a>
                 <br>
-                
                 <a href="https://waze.com/ul?ll=9.007902193808969,-79.50571668557593&navigate=yes" target="_blank" class="waze-btn-small">Ir ahora</a>
             </div>
         </div>
