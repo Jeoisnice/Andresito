@@ -28,37 +28,25 @@
         .nav-link { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
         .nav-link:hover { color: var(--primary); }
 
-        /* --- REDES SOCIALES NAVBAR (CORREGIDO) --- */
+        /* Redes Navbar */
         .nav-socials { display: flex; align-items: center; gap: 10px; }
-        .nav-social-btn {
-            display: flex; align-items: center; justify-content: center;
-            width: 40px; height: 40px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.1); /* Borde sutil base para todos */
-            color: var(--text-gray);
-            font-size: 1.1rem;
-            text-decoration: none; /* QUITA LAS RAYITAS */
-            transition: all 0.3s ease;
-        }
-
-        /* Hover Facebook */
+        .nav-social-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); color: var(--text-gray); font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; }
         .nav-fb:hover { background: #1877f2; color: white; border-color: transparent; transform: scale(1.1); }
-        /* Hover Instagram */
         .nav-ig:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; border-color: transparent; transform: scale(1.1); }
-        /* Hover TikTok (Fondo blanco, icono negro) */
-        .nav-tt:hover {
-             background-color: white;
-             color: black;
-             border-color: transparent;
-             box-shadow: 0 0 15px rgba(255,255,255,0.5);
-             transform: scale(1.1);
-        }
+        .nav-tt:hover { background-color: white; color: black; border-color: transparent; box-shadow: 0 0 15px rgba(255,255,255,0.5); transform: scale(1.1); }
 
         .btn-location { display: flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 30px; text-decoration: none; color: white; font-weight: bold; background: linear-gradient(rgba(139, 92, 246, 0.8), rgba(217, 70, 239, 0.8)), url('https://mt1.google.com/vt/lyrs=m&x=10&y=10&z=5'); background-size: cover; background-position: center; border: 2px solid rgba(255,255,255,0.2); transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
         .btn-location:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(217, 70, 239, 0.6); border-color: var(--primary); }
 
-        /* --- WHATSAPP --- */
-        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; }
+        /* --- WHATSAPP (MÁS GRANDE) --- */
+        .whatsapp-float { 
+            position: fixed; bottom: 30px; right: 30px; 
+            background-color: #25d366; color: white; 
+            /* TAMAÑO AUMENTADO */
+            width: 75px; height: 75px; font-size: 38px;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; 
+        }
         .whatsapp-float:hover { transform: scale(1.1); }
 
         /* --- HERO --- */
@@ -78,22 +66,26 @@
         .title-alive { background: linear-gradient(90deg, #fff, var(--primary), #fff); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: breathe-glow 3s infinite ease-in-out; }
         @keyframes breathe-glow { 0%, 100% { background-position: 0% 50%; transform: scale(1); filter: drop-shadow(0 0 0 transparent); } 50% { background-position: 100% 50%; transform: scale(1.05); filter: drop-shadow(0 0 10px var(--primary)); } }
 
-        /* --- TÍTULO GALERÍA CON SOMBRA 3D Y VIDA --- */
-        .gallery-title-3d {
-            color: white;
-            text-shadow: 
-                1px 1px 0px #999,
-                2px 2px 0px #888,
-                3px 3px 0px #777,
-                4px 4px 0px #666,
-                5px 5px 10px rgba(0,0,0,0.8);
-            animation: gallery-pulse 4s infinite ease-in-out;
-        }
-        @keyframes gallery-pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); letter-spacing: 2px; }
-        }
+        /* Titulo Galería 3D */
+        .gallery-title-3d { color: white; text-shadow: 1px 1px 0px #999, 2px 2px 0px #888, 3px 3px 0px #777, 4px 4px 0px #666, 5px 5px 10px rgba(0,0,0,0.8); animation: gallery-pulse 4s infinite ease-in-out; }
+        @keyframes gallery-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); letter-spacing: 2px; } }
 
+        /* --- TÍTULO CONTACTO (NUEVO DEGRADADO VERTICAL ANIMADO) --- */
+        .contact-title-brand {
+            /* Degradado vertical: Azul FB -> Rosa IG -> Oscuro TT */
+            background: linear-gradient(180deg, #1877f2 0%, #e1306c 40%, #222222 80%);
+            background-size: 100% 250%; /* Hacemos el fondo más alto para moverlo */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            /* Animación que mueve el fondo verticalmente */
+            animation: brand-gradient-shift 6s ease-in-out infinite alternate;
+            /* Sombra sutil para que destaque del fondo */
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
+        }
+        @keyframes brand-gradient-shift {
+            0% { background-position: 0% 0%; } /* Muestra azul/rosa */
+            100% { background-position: 0% 100%; } /* Muestra rosa/oscuro */
+        }
 
         /* --- BIOGRAFÍA --- */
         .bio { background-color: var(--card-bg); position: relative; overflow: hidden; }
@@ -130,7 +122,7 @@
         .hover-label { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); }
         .service-card:hover .hover-label { opacity: 1; }
 
-        /* --- GALERÍA VIVA (MODELOS) --- */
+        /* --- GALERÍA VIVA --- */
         .gallery { background-color: var(--card-bg); }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px 0; max-width: 1200px; margin: 0 auto; }
         .gallery-item { height: 400px; border-radius: 15px; overflow: hidden; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
@@ -138,19 +130,13 @@
         .gallery-item:hover img { filter: grayscale(0%) contrast(1.2) brightness(1.1); transform: scale(1.2); animation-play-state: paused; }
         @keyframes pan-image { 0% { transform: scale(1.1) translate(0, 0); } 50% { transform: scale(1.25) translate(-2%, -2%); } 100% { transform: scale(1.1) translate(2%, 2%); } }
 
-        /* --- REDES SOCIALES FOOTER (CORREGIDO TIKTOK) --- */
+        /* --- REDES SOCIALES FOOTER --- */
         .contact-container { max-width: 1000px; margin: 0 auto; }
         .social-links-big { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
         .social-btn-big { width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255,255,255,0.1); }
-        
         .fb-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .fb-btn:hover { background: #1877f2; color: white; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(24, 119, 242, 0.5); border-color: transparent; }
-        
         .ig-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .ig-btn:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(220, 39, 67, 0.5); border-color: transparent; }
-        
-        /* TIKTOK FOOTER: Base transparente, Hover blanco */
-        .tt-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } 
-        .tt-btn:hover { background: #ffffff; color: #000000; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.6); border-color: transparent; }
-        
+        .tt-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .tt-btn:hover { background: #ffffff; color: #000000; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.6); border-color: transparent; }
         .address-box { margin-top: 40px; padding: 30px; border: 2px dashed var(--text-gray); border-radius: 20px; display: inline-block; }
 
         @media (max-width: 768px) { .navbar { padding: 10px 20px; flex-wrap: wrap; } .nav-links-container { display: none; } .btn-location { margin-left: auto; font-size: 0.8rem; padding: 8px 15px; } .hero h1 { font-size: 2.8rem; } }
@@ -164,7 +150,6 @@
             <a href="#inicio" class="nav-link">Inicio</a>
             <a href="#servicios" class="nav-link">Servicios</a>
             <a href="#contacto" class="nav-link">Contacto</a>
-            
             <div class="nav-socials">
                 <a href="#" class="nav-social-btn nav-fb"><i class="fa-brands fa-facebook-f"></i></a>
                 <a href="#" class="nav-social-btn nav-ig"><i class="fa-brands fa-instagram"></i></a>
@@ -228,7 +213,6 @@
 
     <section class="section-pad gallery text-center">
         <h2 class="section-title gallery-title-3d">Galería de Estilos</h2>
-        
         <div class="gallery-grid">
             <div class="gallery-item">
                 <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop" alt="Estilo Hombre">
@@ -246,7 +230,8 @@
     </section>
 
     <section class="section-pad text-center contact-container" id="contacto">
-        <h2 class="section-title">Síguenos & Contáctanos</h2>
+        <h2 class="section-title contact-title-brand">Síguenos & Contáctanos</h2>
+        
         <div class="social-links-big">
             <a href="#" class="social-btn-big fb-btn"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" class="social-btn-big ig-btn"><i class="fa-brands fa-instagram"></i></a>
