@@ -86,23 +86,31 @@
             max-width: 600px;
         }
 
-        .btn-main {
-            padding: 15px 40px;
-            background: linear-gradient(45deg, var(--primary), var(--secondary));
-            border: none;
-            border-radius: 30px;
-            color: white;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            text-decoration: none;
-            transition: transform 0.2s;
-        }
+/* --- BOTÓN PRINCIPAL CON EFECTO REBOTE --- */
+.btn-main {
+    padding: 15px 45px;
+    background: linear-gradient(45deg, var(--primary), var(--secondary));
+    border: none;
+    border-radius: 50px; /* Más redondo */
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    /* Esto suaviza la animación */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
 
-        .btn-main:hover {
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(217, 70, 239, 0.5);
-        }
+/* Al pasar el mouse */
+.btn-main:hover {
+    transform: scale(1.15) rotate(-2deg); /* Crece y se inclina */
+    background: linear-gradient(45deg, var(--secondary), var(--primary)); /* Invierte colores */
+    box-shadow: 0 0 30px var(--primary), 0 0 60px var(--secondary); /* Brillo neón potente */
+    letter-spacing: 2px; /* Las letras se separan un poco */
+}
 
         /* --- SECCIÓN BIOGRAFÍA --- */
         .bio {
@@ -235,8 +243,44 @@
         
         /* Ajustes para celular */
         @media (max-width: 768px) {
-            .hero h1 { font-size: 2.5rem; }
-            .hero p { font-size: 1rem; }
+            /* --- TÍTULO QUE SE EXPANDE --- */
+.hero h1 {
+    font-size: 4rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 20px;
+    background: linear-gradient(to right, var(--primary), #fff, var(--secondary));
+    -webkit-background-clip: text;
+    color: transparent;
+    cursor: default; /* El cursor no cambia a texto */
+    transition: all 0.6s ease; /* Suavidad del movimiento */
+}
+
+/* Efecto al pasar el mouse sobre el título */
+.hero h1:hover {
+    letter-spacing: 15px; /* ¡SE EXPANDE MUCHO! */
+    text-shadow: 0 0 20px rgba(255,255,255,0.5); /* Resplandor blanco */
+    transform: scale(1.05);
+}
+
+/* --- TEXTO QUE SE ILUMINA --- */
+.hero p {
+    font-size: 1.5rem;
+    color: var(--text-gray);
+    margin-bottom: 40px;
+    max-width: 600px;
+    transition: all 0.4s ease;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Efecto al pasar el mouse sobre el texto */
+.hero p:hover {
+    color: #ffffff; /* Se vuelve blanco puro */
+    text-shadow: 0 0 10px var(--primary); /* Brillo rosa */
+    background: rgba(255, 255, 255, 0.1); /* Fondo sutil */
+    transform: translateY(-5px); /* Flota hacia arriba */
+}
             .services { flex-direction: column; align-items: center; }
         }
     </style>
