@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estudio Etéreo | Salón & Barbería</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- ESTILOS GENERALES (MODO OSCURO/VIRAL) --- */
+        :root {
+            --primary: #d946ef; /* Rosa Neón */
+            --secondary: #8b5cf6; /* Morado */
+            --dark-bg: #0f0f11;
+            --card-bg: #18181b;
+            --text-light: #f4f4f5;
+            --text-gray: #a1a1aa;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-light);
+            overflow-x: hidden;
+        }
+
+        /* --- BOTÓN FLOTANTE WHATSAPP --- */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+        }
+
+        /* --- HERO SECTION (PORTADA) --- */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            color: var(--text-gray);
+            margin-bottom: 40px;
+            max-width: 600px;
+        }
+
+        .btn-main {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, var(--primary), var(--secondary));
+            border: none;
+            border-radius: 30px;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+            transition: transform 0.2s;
+        }
+
+        .btn-main:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(217, 70, 239, 0.5);
+        }
+
+        /* --- SECCIÓN BIOGRAFÍA --- */
+        .bio {
+            padding: 80px 20px;
+            text-align: center;
+            background-color: var(--card-bg);
+        }
+
+        .bio-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 10px;
+        }
+
+        /* --- SERVICIOS (BARBERIA Y BELLEZA) --- */
+        .services {
+            padding: 80px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .service-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+        }
+
+        .barber-icon { color: #3b82f6; } /* Azul */
+        .salon-icon { color: #ec4899; } /* Rosa */
+
+        /* --- GALERÍA --- */
+        .gallery {
+            padding: 80px 20px;
+            background-color: var(--card-bg);
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 40px 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-item {
+            height: 300px;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- CONTACTO & DIRECCIÓN --- */
+        .contact {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .social-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .social-btn:hover {
+            background: var(--primary);
+            transform: rotate(10deg);
+        }
+
+        .address-box {
+            margin-top: 40px;
+            padding: 30px;
+            border: 2px dashed var(--text-gray);
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        /* Ajustes para celular */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1rem; }
+            .services { flex-direction: column; align-items: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <a href="https://wa.me/50766690578" target="_blank" class="whatsapp-float">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Estudio Etéreo</h1>
+            <p>Donde tu estilo cobra vida. Barbería de precisión y salón de alta estética.</p>
+            <a href="#contacto" class="btn-main">Reservar Cita</a>
+        </div>
+    </section>
+
+    <section class="bio">
+        <div class="bio-content">
+            <h2 class="section-title">Nuestra Esencia</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-gray);">
+                Somos un espacio creativo dedicado a la belleza moderna. En Estudio Etéreo fusionamos las técnicas clásicas de barbería con las tendencias más virales de color y estilismo. Nuestro equipo está compuesto por artistas apasionados por transformar no solo tu cabello, sino tu confianza.
+            </p>
+        </div>
+    </section>
+
+    <section class="services">
+        <div class="service-card">
+            <i class="fa-solid fa-scissors service-icon barber-icon"></i>
+            <h3>Zona Barbería</h3>
+            <p style="margin-top: 15px; color: var(--text-gray);">
+                Cortes Fade, arreglos de barba con toalla caliente, diseños tribales y perfilado de cejas. El estilo urbano que buscas.
+            </p>
+        </div>
+
+        <div class="service-card">
+            <i class="fa-solid fa-wand-magic-sparkles service-icon salon-icon"></i>
+            <h3>Estudio de Belleza</h3>
+            <p style="margin-top: 15px; color: var(--text-gray);">
+                Balayage, efectos de color fantasía, tratamientos de hidratación profunda, maquillaje social y peinados para eventos.
+            </p>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <h2 class="section-title">Galería de Estilos</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop" alt="Corte 1"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop" alt="Corte 2"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1522337360705-8763d84a783a?q=80&w=2074&auto=format&fit=crop" alt="Corte 3"></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2069&auto=format&fit=crop" alt="Corte 4"></div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact">
+        <h2 class="section-title">Síguenos & Contáctanos</h2>
+        
+        <div class="social-links">
+            <a href="#" class="social-btn" style="background: #1877f2;"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="#" class="social-btn" style="background: #e1306c;"><i class="fa-brands fa-instagram"></i></a>
+            <a href="#" class="social-btn" style="background: #000;"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+
+        <div class="address-box">
+            <i class="fa-solid fa-location-dot" style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;"></i>
+            <h3>Ubicación del Salón</h3>
+            <p style="margin-top: 10px; color: var(--text-gray);">Calle Principal, Plaza Central, Local 5</p>
+            <p style="margin-top: 5px; font-weight: bold; color: white;">Tel: 6669-0578</p>
+        </div>
+
+        <p style="margin-top: 50px; font-size: 0.9rem; color: #555;">© 2024 Estudio Etéreo. Todos los derechos reservados.</p>
+    </section>
+
+</body>
+</html>
