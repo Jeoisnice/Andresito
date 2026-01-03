@@ -28,7 +28,6 @@
         .nav-link { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
         .nav-link:hover { color: var(--primary); }
 
-        /* Redes Navbar */
         .nav-socials { display: flex; align-items: center; gap: 10px; }
         .nav-social-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); color: var(--text-gray); font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; }
         .nav-fb:hover { background: #1877f2; color: white; border-color: transparent; transform: scale(1.1); }
@@ -45,7 +44,8 @@
         /* --- HERO --- */
         .hero { 
             height: 100vh; 
-            background: linear-gradient(rgba(0,0,0,0.5), #0f0f11), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=2070&auto=format&fit=crop'); 
+            /* NUEVA FOTO DE PORTADA EN ARMONÍA (Tonos morados/oscuros) */
+            background: linear-gradient(rgba(0,0,0,0.3), #0f0f11), url('https://images.unsplash.com/photo-1562322140-8baeececf3df?q=80&w=2069&auto=format&fit=crop'); 
             background-size: cover; 
             background-position: center; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; padding-top: 80px; 
@@ -79,17 +79,19 @@
         @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); } }
         .highlight-text { color: transparent; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; font-weight: bold; }
 
-        /* --- SERVICIOS Y GALERÍA (CARDS) --- */
+        /* --- CARDS (Servicios y Galería) --- */
         .services, .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
         .gallery-grid { margin-top: 40px; }
 
         .service-card, .gallery-card { 
             position: relative; width: 100%; max-width: 450px; min-height: 450px; 
-            display: flex; flex-direction: column; justify-content: flex-end; /* Texto abajo */
+            display: flex; flex-direction: column; justify-content: flex-end; 
             align-items: center; text-align: center; 
             border-radius: 20px; background: var(--card-bg); z-index: 1; 
             transition: transform 0.3s; overflow: hidden; 
         }
+        
+        /* Borde Neón */
         .service-card::before, .gallery-card::before { 
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; 
             background: conic-gradient(transparent, transparent, transparent, var(--neon-color)); 
@@ -100,67 +102,76 @@
         }
         @keyframes rotate-border { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
-        /* Colores de Neón */
-        .barber-card { --neon-color: var(--accent-blue); } 
-        .salon-card { --neon-color: var(--primary); }
-        .gallery-card-1 { --neon-color: var(--secondary); } /* Morado */
-        .gallery-card-2 { --neon-color: var(--primary); } /* Rosa */
-        .gallery-card-3 { --neon-color: var(--accent-blue); } /* Azul */
+        /* Colores */
+        .barber-card, .gallery-card-3 { --neon-color: var(--accent-blue); } 
+        .salon-card, .gallery-card-2 { --neon-color: var(--primary); }
+        .gallery-card-1 { --neon-color: var(--secondary); } 
 
         .card-content { 
             position: relative; z-index: 10; padding: 30px; 
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); /* Fondo oscuro para leer */
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); 
             width: 100%; transition: opacity 0.4s ease; 
         }
         .service-icon { font-size: 4rem; margin-bottom: 15px; transition: 0.5s; display: inline-block;}
         .barber-icon { color: var(--accent-blue); } .salon-icon { color: var(--primary); }
-        
         .card-content h3 { font-size: 1.6rem; margin-bottom: 10px; } 
         .card-content p { color: var(--text-gray); font-size: 1rem; }
 
-        /* Slideshow */
+        /* --- SLIDESHOW (ARREGLADO) --- */
         .slideshow-container { position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px; z-index: 0; pointer-events: none; border-radius: 16px; overflow: hidden; }
-        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: transform 6s linear, opacity 1s; }
+        
+        /* Por defecto: Opacidad 0 */
+        .slide { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background-size: cover; background-position: center; 
+            opacity: 0; /* Oculto por defecto */
+            transition: transform 6s linear, opacity 1s; 
+        }
 
-        /* FOTOS SERVICIOS */
+        /* ARREGLO VISUAL: La primera imagen de cada grupo siempre visible por defecto */
+        .slide:first-child { opacity: 1; }
+
+        /* FOTOS SERVICIOS (Barbería y Salón) */
         .slide-b1 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); }
         .slide-b2 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000&auto=format&fit=crop'); }
         .slide-b3 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); }
         .slide-b4 { background-image: url('https://images.unsplash.com/photo-1605497788044-5a90406432b5?q=80&w=2000&auto=format&fit=crop'); }
+        
         .slide-s1 { background-image: url('https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
         
-        /* --- FOTOS GALERÍA (CORREGIDAS - USANDO UNSPLASH EN LUGAR DE PINTEREST) --- */
-        /* G1: Tendencias Urbanas (Reemplazos con textura) */
-        .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1593487568720-92097fb46089?q=80&w=2070&auto=format&fit=crop'); }
-        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1588267691266-105379362441?q=80&w=1974&auto=format&fit=crop'); }
-        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1972&auto=format&fit=crop'); }
+        /* FOTOS GALERÍA (NUEVOS ENLACES FUNCIONALES) */
+        /* Si quieres usar tus fotos, cambia la url por 'nombre-de-tu-foto.jpg' */
+        
+        /* G1: Tendencias Urbanas */
+        .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1593487568720-92097fb46089?q=80&w=2070&auto=format&fit=crop'); } /* Estilo Urbano 1 */
+        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1588267691266-105379362441?q=80&w=1974&auto=format&fit=crop'); } /* Estilo Urbano 2 */
+        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1972&auto=format&fit=crop'); } /* Estilo Urbano 3 */
         
         /* G2: Color & Luminosidad */
-        .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop'); } 
-        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1608245449230-407a28e80200?q=80&w=1974&auto=format&fit=crop'); } 
-        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); }
+        .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop'); } /* Color 1 */
+        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1608245449230-407a28e80200?q=80&w=1974&auto=format&fit=crop'); } /* Color 2 */
+        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); } /* Color 3 */
         
-        /* G3: Perfilado & Precisión (Reemplazos de Fade/Degradado) */
-        .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000&auto=format&fit=crop'); }
-        .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); }
-        .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); }
+        /* G3: Perfilado & Precisión */
+        .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000&auto=format&fit=crop'); } /* Fade 1 */
+        .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); } /* Fade 2 */
+        .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); } /* Fade 3 */
 
-        /* Animaciones del Slideshow */
+        /* Animaciones */
         @keyframes galleryFade3 { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
         @keyframes galleryFade4 { 0% { opacity: 0; } 10% { opacity: 1; } 25% { opacity: 1; } 35% { opacity: 0; } 100% { opacity: 0; } }
         
-        /* Triggers Hover */
         .service-card:hover .slide, .gallery-card:hover .slide { transform: scale(1.1); }
         
-        /* Servicios */
+        /* Aplicar animación AL PASAR EL MOUSE (Hover) */
         .salon-card:hover .slide { animation: galleryFade3 9s infinite; } 
         .salon-card:hover .slide-s1 { animation-delay: 0s; } .salon-card:hover .slide-s2 { animation-delay: 3s; } .salon-card:hover .slide-s3 { animation-delay: 6s; }
+        
         .barber-card:hover .slide { animation: galleryFade4 12s infinite; } 
         .barber-card:hover .slide-b1 { animation-delay: 0s; } .barber-card:hover .slide-b2 { animation-delay: 3s; } .barber-card:hover .slide-b3 { animation-delay: 6s; } .barber-card:hover .slide-b4 { animation-delay: 9s; }
         
-        /* Galería */
         .gallery-card:hover .slide { animation: galleryFade3 9s infinite; }
         .gallery-card-1:hover .slide-g1-1 { animation-delay: 0s; } .gallery-card-1:hover .slide-g1-2 { animation-delay: 3s; } .gallery-card-1:hover .slide-g1-3 { animation-delay: 6s; }
         .gallery-card-2:hover .slide-g2-1 { animation-delay: 0s; } .gallery-card-2:hover .slide-g2-2 { animation-delay: 3s; } .gallery-card-2:hover .slide-g2-3 { animation-delay: 6s; }
@@ -169,31 +180,20 @@
         .hover-label { position: absolute; top: 20px; right: 20px; color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); font-size: 0.8rem; }
         .service-card:hover .hover-label, .gallery-card:hover .hover-label { opacity: 1; }
 
-        /* --- PRECIOS INTERACTIVOS (LINKS DE WHATSAPP) --- */
+        /* --- PRECIOS --- */
         .pricing-section { background: #000; }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
         .pricing-column h3 { font-size: 1.8rem; margin-bottom: 25px; color: white; border-bottom: 2px solid; display: inline-block; padding-bottom: 5px; }
-        
-        .price-item { 
-            display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 20px; padding-bottom: 10px; 
-            border-bottom: 1px dotted rgba(255,255,255,0.2); 
-            text-decoration: none; /* Quitamos subrayado */
-            cursor: pointer; /* Manito al pasar mouse */
-            transition: 0.3s; 
-        }
+        .price-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dotted rgba(255,255,255,0.2); text-decoration: none; cursor: pointer; transition: 0.3s; }
         .price-item:hover { transform: translateX(5px); border-bottom-color: var(--primary); }
-        
         .price-name { font-size: 1.1rem; color: var(--text-gray); transition: color 0.3s; }
         .price-item:hover .price-name { color: white; }
-        
         .price-val { font-weight: bold; font-size: 1.2rem; color: white; }
 
-        /* --- GALERÍA VIVA --- */
+        /* --- GALERÍA TÍTULO --- */
         .gallery-title-3d { color: white; text-shadow: 1px 1px 0px #999, 2px 2px 0px #888, 3px 3px 0px #777, 4px 4px 0px #666, 5px 5px 10px rgba(0,0,0,0.8); animation: gallery-pulse 4s infinite ease-in-out; }
         @keyframes gallery-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); letter-spacing: 2px; } }
         .gallery { background-color: var(--card-bg); }
-       
 
         /* --- CONTACTO --- */
         .contact-container { max-width: 1000px; margin: 0 auto; }
@@ -205,33 +205,13 @@
         .ig-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .ig-btn:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(220, 39, 67, 0.5); border-color: transparent; }
         .tt-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .tt-btn:hover { background: #ffffff; color: #000000; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.6); border-color: transparent; }
         
-        /* --- UBICACIÓN DINÁMICA --- */
-        .address-box-dynamic {
-            position: relative;
-            padding: 40px; margin-top: 50px; display: inline-block;
-            background: rgba(255, 255, 255, 0.03); border-radius: 30px; overflow: hidden; transition: 0.3s;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
-        .address-box-dynamic::before {
-            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
-            background: conic-gradient(transparent, var(--primary), transparent, var(--accent-blue));
-            animation: rotate-border 6s linear infinite; z-index: 0;
-        }
+        .address-box-dynamic { position: relative; padding: 40px; margin-top: 50px; display: inline-block; background: rgba(255, 255, 255, 0.03); border-radius: 30px; overflow: hidden; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
+        .address-box-dynamic::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, var(--primary), transparent, var(--accent-blue)); animation: rotate-border 6s linear infinite; z-index: 0; }
         .address-box-dynamic::after { content: ''; position: absolute; inset: 3px; background: #0f0f11; border-radius: 27px; z-index: 0; }
         .address-content { position: relative; z-index: 2; }
-        
-        .location-icon-anim {
-            font-size: 3rem; margin-bottom: 15px;
-            background: linear-gradient(to bottom, var(--primary), var(--secondary));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-            animation: bounce-pin 2s infinite; display: inline-block;
-        }
+        .location-icon-anim { font-size: 3rem; margin-bottom: 15px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: bounce-pin 2s infinite; display: inline-block; }
         @keyframes bounce-pin { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} 60% {transform: translateY(-10px);} }
-        
-        .waze-btn-small {
-            display: inline-block; margin-top: 15px; padding: 8px 20px; font-size: 0.9rem;
-            border: 1px solid var(--accent-blue); border-radius: 20px; color: var(--accent-blue); text-decoration: none; transition: 0.3s;
-        }
+        .waze-btn-small { display: inline-block; margin-top: 15px; padding: 8px 20px; font-size: 0.9rem; border: 1px solid var(--accent-blue); border-radius: 20px; color: var(--accent-blue); text-decoration: none; transition: 0.3s; }
         .waze-btn-small:hover { background: var(--accent-blue); color: white; }
 
         @media (max-width: 768px) { .navbar { padding: 10px 20px; flex-wrap: wrap; } .nav-links-container { display: none; } .btn-location { margin-left: auto; font-size: 0.8rem; padding: 8px 15px; } .hero h1 { font-size: 2.8rem; } }
@@ -332,7 +312,11 @@
         <div class="gallery-grid">
             
             <div class="gallery-card gallery-card-1">
-                <div class="slideshow-container"><div class="slide slide-g1-1"></div><div class="slide slide-g1-2"></div><div class="slide slide-g1-3"></div></div>
+                <div class="slideshow-container">
+                    <div class="slide slide-g1-1"></div>
+                    <div class="slide slide-g1-2"></div>
+                    <div class="slide slide-g1-3"></div>
+                </div>
                 <div class="card-content">
                     <h3 class="title-alive">Tendencias Urbanas</h3>
                     <p>Estilos modernos y versátiles que marcan el ritmo de la ciudad. Texturas naturales y cortes con movimiento.</p>
@@ -341,16 +325,24 @@
             </div>
 
             <div class="gallery-card gallery-card-2">
-                <div class="slideshow-container"><div class="slide slide-g2-1"></div><div class="slide slide-g2-2"></div><div class="slide slide-g2-3"></div></div>
+                <div class="slideshow-container">
+                    <div class="slide slide-g2-1"></div>
+                    <div class="slide slide-g2-2"></div>
+                    <div class="slide slide-g2-3"></div>
+                </div>
                 <div class="card-content">
                     <h3 class="title-alive">Color & Luminosidad</h3>
-                    <p>Técnicas avanzadas de coloración para dar vida y brillo espectacular a tu cabello. Desde balayage sutil hasta tonos vibrantes.</p>
+                    <p>Técnicas avanzadas de coloración para dar vida y brillo espectacular. Desde balayage hasta tonos vibrantes.</p>
                 </div>
                 <div class="hover-label">Ver Más</div>
             </div>
 
             <div class="gallery-card gallery-card-3">
-                <div class="slideshow-container"><div class="slide slide-g3-1"></div><div class="slide slide-g3-2"></div><div class="slide slide-g3-3"></div></div>
+                <div class="slideshow-container">
+                    <div class="slide slide-g3-1"></div>
+                    <div class="slide slide-g3-2"></div>
+                    <div class="slide slide-g3-3"></div>
+                </div>
                 <div class="card-content">
                     <h3 class="title-alive">Perfilado & Precisión</h3>
                     <p>Acabados impecables y líneas definidas. La excelencia en barbería para un look pulido y profesional.</p>
