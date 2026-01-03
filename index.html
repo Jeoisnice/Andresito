@@ -131,19 +131,21 @@
         .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
         
-        /* FOTOS GALERÍA (NUEVAS) */
-        /* G1: Tendencias Urbanas */
-        .slide-g1-1 { background-image: url('https://i.pinimg.com/564x/11/66/45/11664511451166451145116645114511.jpg'); } /* image_5.png */
-        .slide-g1-2 { background-image: url('https://i.pinimg.com/564x/22/77/56/22775622775622775622775622775622.jpg'); } /* image_6.png */
-        .slide-g1-3 { background-image: url('https://i.pinimg.com/564x/33/88/67/33886733886733886733886733886733.jpg'); } /* image_7.png */
+        /* --- FOTOS GALERÍA (CORREGIDAS - USANDO UNSPLASH EN LUGAR DE PINTEREST) --- */
+        /* G1: Tendencias Urbanas (Reemplazos con textura) */
+        .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1593487568720-92097fb46089?q=80&w=2070&auto=format&fit=crop'); }
+        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1588267691266-105379362441?q=80&w=1974&auto=format&fit=crop'); }
+        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1972&auto=format&fit=crop'); }
+        
         /* G2: Color & Luminosidad */
-        .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop'); } /* Balayage */
-        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1608245449230-407a28e80200?q=80&w=1974&auto=format&fit=crop'); } /* Pelo Rosa */
-        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); } /* Rubio */
-        /* G3: Perfilado & Precisión */
-        .slide-g3-1 { background-image: url('https://i.pinimg.com/564x/44/99/78/44997844997844997844997844997844.jpg'); } /* image_8.png */
-        .slide-g3-2 { background-image: url('https://i.pinimg.com/564x/55/00/89/55008955008955008955008955008955.jpg'); } /* image_9.png */
-        .slide-g3-3 { background-image: url('https://i.pinimg.com/564x/66/11/90/66119066119066119066119066119066.jpg'); } /* image_10.png */
+        .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop'); } 
+        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1608245449230-407a28e80200?q=80&w=1974&auto=format&fit=crop'); } 
+        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); }
+        
+        /* G3: Perfilado & Precisión (Reemplazos de Fade/Degradado) */
+        .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000&auto=format&fit=crop'); }
+        .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); }
+        .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); }
 
         /* Animaciones del Slideshow */
         @keyframes galleryFade3 { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
@@ -167,20 +169,31 @@
         .hover-label { position: absolute; top: 20px; right: 20px; color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); font-size: 0.8rem; }
         .service-card:hover .hover-label, .gallery-card:hover .hover-label { opacity: 1; }
 
-        /* --- PRECIOS --- */
+        /* --- PRECIOS INTERACTIVOS (LINKS DE WHATSAPP) --- */
         .pricing-section { background: #000; }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
         .pricing-column h3 { font-size: 1.8rem; margin-bottom: 25px; color: white; border-bottom: 2px solid; display: inline-block; padding-bottom: 5px; }
-        .price-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dotted rgba(255,255,255,0.2); text-decoration: none; cursor: pointer; transition: 0.3s; }
+        
+        .price-item { 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 20px; padding-bottom: 10px; 
+            border-bottom: 1px dotted rgba(255,255,255,0.2); 
+            text-decoration: none; /* Quitamos subrayado */
+            cursor: pointer; /* Manito al pasar mouse */
+            transition: 0.3s; 
+        }
         .price-item:hover { transform: translateX(5px); border-bottom-color: var(--primary); }
+        
         .price-name { font-size: 1.1rem; color: var(--text-gray); transition: color 0.3s; }
         .price-item:hover .price-name { color: white; }
+        
         .price-val { font-weight: bold; font-size: 1.2rem; color: white; }
 
-        /* --- GALERÍA TÍTULO --- */
-        .gallery { background-color: var(--card-bg); }
+        /* --- GALERÍA VIVA --- */
         .gallery-title-3d { color: white; text-shadow: 1px 1px 0px #999, 2px 2px 0px #888, 3px 3px 0px #777, 4px 4px 0px #666, 5px 5px 10px rgba(0,0,0,0.8); animation: gallery-pulse 4s infinite ease-in-out; }
         @keyframes gallery-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); letter-spacing: 2px; } }
+        .gallery { background-color: var(--card-bg); }
+       
 
         /* --- CONTACTO --- */
         .contact-container { max-width: 1000px; margin: 0 auto; }
