@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Estudio Etéreo | Salón & Barbería</title>
+    <title>Estudio Etéreo | Bless Total Service</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
@@ -23,7 +23,7 @@
         body { background-color: var(--dark-bg); color: var(--text-light); overflow-x: hidden; }
 
         /* --- NAVBAR --- */
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent); backdrop-filter: blur(8px); }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent); backdrop-filter: blur(10px); }
         .nav-links-container { display: flex; align-items: center; gap: 30px; }
         .nav-link { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
         .nav-link:hover { color: var(--primary); }
@@ -42,14 +42,22 @@
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 75px; height: 75px; font-size: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* --- HERO --- */
-        .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; padding-top: 80px; }
+        /* --- HERO (NUEVA IMAGEN EN ARMONÍA) --- */
+        /* Usamos un fondo abstracto oscuro con tonos morados/magentas para combinar con el sitio */
+        .hero { 
+            height: 100vh; 
+            background: linear-gradient(rgba(0,0,0,0.5), #0f0f11), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=2070&auto=format&fit=crop'); 
+            background-size: cover; 
+            background-position: center; 
+            display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; padding-top: 80px; 
+        }
+        
         .hero h1 { font-size: 4.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 900; background: linear-gradient(-45deg, #ff00cc, #3333ff, #d946ef, #00ffff); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer-text 6s ease infinite; text-shadow: 0 0 30px rgba(217, 70, 239, 0.3); }
         @keyframes shimmer-text { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         
         .hero-subtitle {
             font-size: 1.5rem; color: var(--text-light); margin-bottom: 40px; max-width: 700px;
-            background: rgba(255,255,255,0.05); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+            background: rgba(0,0,0,0.4); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
             animation: fadeUp 1s ease-out 0.5s backwards;
         }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
@@ -129,7 +137,35 @@
         .fb-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .fb-btn:hover { background: #1877f2; color: white; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(24, 119, 242, 0.5); border-color: transparent; }
         .ig-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .ig-btn:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(220, 39, 67, 0.5); border-color: transparent; }
         .tt-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .tt-btn:hover { background: #ffffff; color: #000000; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.6); border-color: transparent; }
-        .address-box { margin-top: 40px; padding: 30px; border: 2px dashed var(--text-gray); border-radius: 20px; display: inline-block; }
+        
+        /* --- UBICACIÓN DINÁMICA --- */
+        .address-box-dynamic {
+            position: relative;
+            padding: 40px; margin-top: 50px; display: inline-block;
+            background: rgba(255, 255, 255, 0.03); border-radius: 30px; overflow: hidden; transition: 0.3s;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .address-box-dynamic::before {
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+            background: conic-gradient(transparent, var(--primary), transparent, var(--accent-blue));
+            animation: rotate-border 6s linear infinite; z-index: 0;
+        }
+        .address-box-dynamic::after { content: ''; position: absolute; inset: 3px; background: #0f0f11; border-radius: 27px; z-index: 0; }
+        .address-content { position: relative; z-index: 2; }
+        
+        .location-icon-anim {
+            font-size: 3rem; margin-bottom: 15px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            animation: bounce-pin 2s infinite; display: inline-block;
+        }
+        @keyframes bounce-pin { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} 60% {transform: translateY(-10px);} }
+        
+        .waze-btn-small {
+            display: inline-block; margin-top: 15px; padding: 8px 20px; font-size: 0.9rem;
+            border: 1px solid var(--accent-blue); border-radius: 20px; color: var(--accent-blue); text-decoration: none; transition: 0.3s;
+        }
+        .waze-btn-small:hover { background: var(--accent-blue); color: white; }
 
         @media (max-width: 768px) { .navbar { padding: 10px 20px; flex-wrap: wrap; } .nav-links-container { display: none; } .btn-location { margin-left: auto; font-size: 0.8rem; padding: 8px 15px; } .hero h1 { font-size: 2.8rem; } }
     </style>
@@ -144,9 +180,9 @@
             <a href="#precios" class="nav-link">Precios</a>
             <a href="#contacto" class="nav-link">Contacto</a>
             <div class="nav-socials">
-                <a href="#" class="nav-social-btn nav-fb"><i class="fa-brands fa-facebook-f"></i></a>
-                <a href="#" class="nav-social-btn nav-ig"><i class="fa-brands fa-instagram"></i></a>
-                <a href="#" class="nav-social-btn nav-tt"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://www.facebook.com/share/1CvsbepQJb/?mibextid=wwXIfr" target="_blank" class="nav-social-btn nav-fb"><i class="fa-brands fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/blesstotalservice/" target="_blank" class="nav-social-btn nav-ig"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@utepistapromedio?_r=1&_t=ZM-92lmYykCtVj" target="_blank" class="nav-social-btn nav-tt"><i class="fa-brands fa-tiktok"></i></a>
             </div>
         </div>
         <a href="https://waze.com/ul?ll=9.007902193808969,-79.50571668557593&navigate=yes" target="_blank" class="btn-location">
@@ -204,7 +240,6 @@
 
     <section class="section-pad pricing-section text-center" id="precios">
         <h2 class="section-title" style="border-bottom: 2px solid #fff;">Inversión en Ti</h2>
-        
         <div class="pricing-grid">
             <div class="pricing-column">
                 <h3 style="border-color: var(--accent-blue);">Menú Barbería</h3>
@@ -237,16 +272,21 @@
     <section class="section-pad text-center contact-container" id="contacto">
         <h2 class="section-title contact-title-brand">Síguenos & Contáctanos</h2>
         <div class="social-links-big">
-            <a href="#" class="social-btn-big fb-btn"><i class="fa-brands fa-facebook-f"></i></a>
-            <a href="#" class="social-btn-big ig-btn"><i class="fa-brands fa-instagram"></i></a>
-            <a href="#" class="social-btn-big tt-btn"><i class="fa-brands fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/share/1CvsbepQJb/?mibextid=wwXIfr" target="_blank" class="social-btn-big fb-btn"><i class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.instagram.com/blesstotalservice/" target="_blank" class="social-btn-big ig-btn"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@utepistapromedio?_r=1&_t=ZM-92lmYykCtVj" target="_blank" class="social-btn-big tt-btn"><i class="fa-brands fa-tiktok"></i></a>
         </div>
-        <div id="ubicacion-final" class="address-box">
-            <i class="fa-solid fa-map-location-dot" style="font-size: 2rem; color: var(--primary); margin-bottom: 10px;"></i>
-            <h3>Ubicación del Salón</h3>
-            <p style="margin-top: 10px; color: var(--text-gray);">Calle Principal, Plaza Central, Local 5, Ciudad.</p>
-            <p style="margin-top: 5px; font-weight: bold; color: white;">Tel: 6669-0578</p>
+        
+        <div id="ubicacion-final" class="address-box-dynamic">
+            <div class="address-content">
+                <i class="fa-solid fa-location-dot location-icon-anim"></i>
+                <h3>Ubicación Estratégica</h3>
+                <p style="margin-top: 10px; color: var(--text-gray);">Costado del Restaurante Waikiki</p>
+                <p style="margin-top: 5px; font-weight: bold; color: white;">Tel: 6669-0578</p>
+                <a href="https://waze.com/ul?ll=9.007902193808969,-79.50571668557593&navigate=yes" target="_blank" class="waze-btn-small">Ir ahora</a>
+            </div>
         </div>
+
         <p style="margin-top: 50px; font-size: 0.9rem; color: #555;">© 2024 Estudio Etéreo. Todos los derechos reservados.</p>
     </section>
 
