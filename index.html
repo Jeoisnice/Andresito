@@ -38,22 +38,25 @@
         .btn-location { display: flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 30px; text-decoration: none; color: white; font-weight: bold; background: linear-gradient(rgba(139, 92, 246, 0.8), rgba(217, 70, 239, 0.8)), url('https://mt1.google.com/vt/lyrs=m&x=10&y=10&z=5'); background-size: cover; background-position: center; border: 2px solid rgba(255,255,255,0.2); transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
         .btn-location:hover { transform: translateY(-3px); box-shadow: 0 0 20px rgba(217, 70, 239, 0.6); border-color: var(--primary); }
 
-        /* --- WHATSAPP (MÁS GRANDE) --- */
-        .whatsapp-float { 
-            position: fixed; bottom: 30px; right: 30px; 
-            background-color: #25d366; color: white; 
-            /* TAMAÑO AUMENTADO */
-            width: 75px; height: 75px; font-size: 38px;
-            border-radius: 50%; display: flex; align-items: center; justify-content: center; 
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; 
-        }
+        /* --- WHATSAPP --- */
+        .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 75px; height: 75px; font-size: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; }
         .whatsapp-float:hover { transform: scale(1.1); }
 
         /* --- HERO --- */
         .hero { height: 100vh; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop'); background-size: cover; background-position: center; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; padding-top: 80px; }
         .hero h1 { font-size: 4.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 900; background: linear-gradient(-45deg, #ff00cc, #3333ff, #d946ef, #00ffff); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer-text 6s ease infinite; text-shadow: 0 0 30px rgba(217, 70, 239, 0.3); }
         @keyframes shimmer-text { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
-        .hero p { font-size: 1.5rem; color: var(--text-gray); margin-bottom: 40px; max-width: 600px; }
+        
+        /* Subtitulo Hero Vivo */
+        .hero-subtitle {
+            font-size: 1.5rem; color: var(--text-light); margin-bottom: 40px; max-width: 700px;
+            /* Glass bg sutil */
+            background: rgba(255,255,255,0.05); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+            /* Animación de entrada */
+            animation: fadeUp 1s ease-out 0.5s backwards;
+        }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        
         .btn-main { padding: 15px 45px; background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 800; cursor: pointer; text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
         .btn-main:hover { transform: scale(1.15) rotate(-2deg); background: linear-gradient(45deg, var(--secondary), var(--primary)); box-shadow: 0 0 30px var(--primary), 0 0 60px var(--secondary); letter-spacing: 2px; }
 
@@ -61,38 +64,18 @@
         .section-pad { padding: 100px 20px; }
         .text-center { text-align: center; }
         .section-title { font-size: 2.8rem; margin-bottom: 40px; display: inline-block; padding-bottom: 10px; position: relative; }
-        
-        /* Titulo Vivo (Nuestros Mundos) */
         .title-alive { background: linear-gradient(90deg, #fff, var(--primary), #fff); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: breathe-glow 3s infinite ease-in-out; }
         @keyframes breathe-glow { 0%, 100% { background-position: 0% 50%; transform: scale(1); filter: drop-shadow(0 0 0 transparent); } 50% { background-position: 100% 50%; transform: scale(1.05); filter: drop-shadow(0 0 10px var(--primary)); } }
 
-        /* Titulo Galería 3D */
-        .gallery-title-3d { color: white; text-shadow: 1px 1px 0px #999, 2px 2px 0px #888, 3px 3px 0px #777, 4px 4px 0px #666, 5px 5px 10px rgba(0,0,0,0.8); animation: gallery-pulse 4s infinite ease-in-out; }
-        @keyframes gallery-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); letter-spacing: 2px; } }
-
-        /* --- TÍTULO CONTACTO (NUEVO DEGRADADO VERTICAL ANIMADO) --- */
-        .contact-title-brand {
-            /* Degradado vertical: Azul FB -> Rosa IG -> Oscuro TT */
-            background: linear-gradient(180deg, #1877f2 0%, #e1306c 40%, #222222 80%);
-            background-size: 100% 250%; /* Hacemos el fondo más alto para moverlo */
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            /* Animación que mueve el fondo verticalmente */
-            animation: brand-gradient-shift 6s ease-in-out infinite alternate;
-            /* Sombra sutil para que destaque del fondo */
-            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5));
-        }
-        @keyframes brand-gradient-shift {
-            0% { background-position: 0% 0%; } /* Muestra azul/rosa */
-            100% { background-position: 0% 100%; } /* Muestra rosa/oscuro */
-        }
-
-        /* --- BIOGRAFÍA --- */
+        /* --- BIOGRAFÍA (TEXTO CON VIDA) --- */
         .bio { background-color: var(--card-bg); position: relative; overflow: hidden; }
         .bio::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%); animation: pulse-bg 10s infinite; pointer-events: none; }
         @keyframes pulse-bg { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 0.8; } }
         .bio-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; padding: 40px; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px); box-shadow: 0 0 30px rgba(0,0,0,0.2); animation: float-bio 6s ease-in-out infinite; }
         @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); } }
+        
+        /* Palabras resaltadas en Bio */
+        .highlight-text { color: transparent; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; font-weight: bold; }
 
         /* --- SERVICIOS --- */
         .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; }
@@ -122,7 +105,19 @@
         .hover-label { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); }
         .service-card:hover .hover-label { opacity: 1; }
 
+        /* --- NUEVA SECCIÓN DE PRECIOS (CATALOGO) --- */
+        .pricing-section { background: #000; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
+        .pricing-column h3 { font-size: 1.8rem; margin-bottom: 25px; color: white; border-bottom: 2px solid; display: inline-block; padding-bottom: 5px; }
+        .price-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dotted rgba(255,255,255,0.2); transition: 0.3s; }
+        .price-item:hover { transform: translateX(5px); border-bottom-color: var(--primary); }
+        .price-name { font-size: 1.1rem; color: var(--text-gray); }
+        .price-item:hover .price-name { color: white; }
+        .price-val { font-weight: bold; font-size: 1.2rem; color: white; }
+
         /* --- GALERÍA VIVA --- */
+        .gallery-title-3d { color: white; text-shadow: 1px 1px 0px #999, 2px 2px 0px #888, 3px 3px 0px #777, 4px 4px 0px #666, 5px 5px 10px rgba(0,0,0,0.8); animation: gallery-pulse 4s infinite ease-in-out; }
+        @keyframes gallery-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); letter-spacing: 2px; } }
         .gallery { background-color: var(--card-bg); }
         .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px 0; max-width: 1200px; margin: 0 auto; }
         .gallery-item { height: 400px; border-radius: 15px; overflow: hidden; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
@@ -130,8 +125,10 @@
         .gallery-item:hover img { filter: grayscale(0%) contrast(1.2) brightness(1.1); transform: scale(1.2); animation-play-state: paused; }
         @keyframes pan-image { 0% { transform: scale(1.1) translate(0, 0); } 50% { transform: scale(1.25) translate(-2%, -2%); } 100% { transform: scale(1.1) translate(2%, 2%); } }
 
-        /* --- REDES SOCIALES FOOTER --- */
+        /* --- CONTACTO --- */
         .contact-container { max-width: 1000px; margin: 0 auto; }
+        .contact-title-brand { background: linear-gradient(180deg, #1877f2 0%, #e1306c 40%, #222222 80%); background-size: 100% 250%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: brand-gradient-shift 6s ease-in-out infinite alternate; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); }
+        @keyframes brand-gradient-shift { 0% { background-position: 0% 0%; } 100% { background-position: 0% 100%; } }
         .social-links-big { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
         .social-btn-big { width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255,255,255,0.1); }
         .fb-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .fb-btn:hover { background: #1877f2; color: white; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(24, 119, 242, 0.5); border-color: transparent; }
@@ -149,6 +146,7 @@
         <div class="nav-links-container">
             <a href="#inicio" class="nav-link">Inicio</a>
             <a href="#servicios" class="nav-link">Servicios</a>
+            <a href="#precios" class="nav-link">Precios</a>
             <a href="#contacto" class="nav-link">Contacto</a>
             <div class="nav-socials">
                 <a href="#" class="nav-social-btn nav-fb"><i class="fa-brands fa-facebook-f"></i></a>
@@ -169,7 +167,9 @@
     <section class="hero" id="inicio">
         <div class="hero-content">
             <h1>Estudio Etéreo</h1>
-            <p>Donde tu estilo cobra vida. Barbería de precisión y salón de alta estética.</p>
+            <p class="hero-subtitle">
+                Donde tu estilo <span style="color:var(--primary); font-weight:bold;">cobra vida</span>. Barbería de precisión y salón de alta estética.
+            </p>
             <a href="#contacto" class="btn-main">Reservar Cita</a>
         </div>
     </section>
@@ -177,8 +177,8 @@
     <section class="section-pad bio text-center">
         <div class="bio-content">
             <h2 class="section-title" style="border-bottom: 2px solid var(--secondary);">Nuestra Esencia</h2>
-            <p style="font-size: 1.1rem; line-height: 1.8; color: var(--text-light); text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
-                Somos un espacio creativo dedicado a la belleza moderna. En Estudio Etéreo fusionamos las técnicas clásicas de barbería con las tendencias más virales de color y estilismo.
+            <p style="font-size: 1.15rem; line-height: 1.9; color: var(--text-light); text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+                Somos un espacio creativo dedicado a la <span class="highlight-text">belleza moderna</span>. En Estudio Etéreo fusionamos las <span class="highlight-text">técnicas clásicas</span> de barbería con las <span class="highlight-text">tendencias más virales</span> de color y estilismo.
             </p>
         </div>
     </section>
@@ -187,9 +187,7 @@
         <h2 class="section-title title-alive">Nuestros Mundos</h2>
         <div class="services">
             <div class="service-card barber-card">
-                <div class="slideshow-container">
-                    <div class="slide slide-b1"></div> <div class="slide slide-b2"></div> <div class="slide slide-b3"></div> <div class="slide slide-b4"></div>
-                </div>
+                <div class="slideshow-container"><div class="slide slide-b1"></div> <div class="slide slide-b2"></div> <div class="slide slide-b3"></div> <div class="slide slide-b4"></div></div>
                 <div class="card-content">
                     <i class="fa-solid fa-scissors service-icon barber-icon"></i>
                     <h3>Zona Barbería</h3>
@@ -198,9 +196,7 @@
                 <div class="hover-label">Ver Catálogo</div>
             </div>
             <div class="service-card salon-card">
-                <div class="slideshow-container">
-                    <div class="slide slide-s1"></div> <div class="slide slide-s2"></div> <div class="slide slide-s3"></div>
-                </div>
+                <div class="slideshow-container"><div class="slide slide-s1"></div> <div class="slide slide-s2"></div> <div class="slide slide-s3"></div></div>
                 <div class="card-content">
                     <i class="fa-solid fa-wand-magic-sparkles service-icon salon-icon"></i>
                     <h3>Estudio de Belleza</h3>
@@ -211,27 +207,41 @@
         </div>
     </section>
 
+    <section class="section-pad pricing-section text-center" id="precios">
+        <h2 class="section-title" style="border-bottom: 2px solid #fff;">Inversión en Ti</h2>
+        
+        <div class="pricing-grid">
+            <div class="pricing-column">
+                <h3 style="border-color: var(--accent-blue);">Menú Barbería</h3>
+                <div class="price-item"><span class="price-name">Corte Clásico / Fade</span><span class="price-val">$15.00</span></div>
+                <div class="price-item"><span class="price-name">Barba & Toalla Caliente</span><span class="price-val">$12.00</span></div>
+                <div class="price-item"><span class="price-name">Perfilado de Cejas</span><span class="price-val">$8.00</span></div>
+                <div class="price-item"><span class="price-name">Corte + Barba (Combo)</span><span class="price-val">$25.00</span></div>
+                <div class="price-item"><span class="price-name">Diseño Tribal</span><span class="price-val">+$5.00</span></div>
+            </div>
+
+            <div class="pricing-column">
+                <h3 style="border-color: var(--primary);">Menú Salón</h3>
+                <div class="price-item"><span class="price-name">Corte de Dama</span><span class="price-val">$20.00</span></div>
+                <div class="price-item"><span class="price-name">Balayage / Mechas</span><span class="price-val">$80.00+</span></div>
+                <div class="price-item"><span class="price-name">Tinte Completo</span><span class="price-val">$50.00+</span></div>
+                <div class="price-item"><span class="price-name">Hidratación Profunda</span><span class="price-val">$35.00</span></div>
+                <div class="price-item"><span class="price-name">Maquillaje Social</span><span class="price-val">$45.00</span></div>
+            </div>
+        </div>
+    </section>
+
     <section class="section-pad gallery text-center">
         <h2 class="section-title gallery-title-3d">Galería de Estilos</h2>
         <div class="gallery-grid">
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop" alt="Estilo Hombre">
-                <div style="position:absolute; bottom:10px; left:10px; font-weight:bold; text-shadow:0 2px 4px black;">Cortes Urbanos</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop" alt="Estilo Mujer">
-                 <div style="position:absolute; bottom:10px; left:10px; font-weight:bold; text-shadow:0 2px 4px black;">Color & Brillo</div>
-            </div>
-            <div class="gallery-item">
-                <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop" alt="Estilo Elegante">
-                 <div style="position:absolute; bottom:10px; left:10px; font-weight:bold; text-shadow:0 2px 4px black;">Perfilado Ejecutivo</div>
-            </div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop" alt="Estilo Hombre"><div style="position:absolute; bottom:10px; left:10px; font-weight:bold; text-shadow:0 2px 4px black;">Cortes Urbanos</div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop" alt="Estilo Mujer"><div style="position:absolute; bottom:10px; left:10px; font-weight:bold; text-shadow:0 2px 4px black;">Color & Brillo</div></div>
+            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop" alt="Estilo Elegante"><div style="position:absolute; bottom:10px; left:10px; font-weight:bold; text-shadow:0 2px 4px black;">Perfilado Ejecutivo</div></div>
         </div>
     </section>
 
     <section class="section-pad text-center contact-container" id="contacto">
         <h2 class="section-title contact-title-brand">Síguenos & Contáctanos</h2>
-        
         <div class="social-links-big">
             <a href="#" class="social-btn-big fb-btn"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" class="social-btn-big ig-btn"><i class="fa-brands fa-instagram"></i></a>
