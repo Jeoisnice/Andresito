@@ -41,11 +41,11 @@
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 75px; height: 75px; font-size: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* --- HERO (PORTADA RESTAURADA) --- */
+        /* --- HERO (PORTADA RESTAURADA - LA ARTÍSTICA) --- */
         .hero { 
             height: 100vh; 
-            /* HE VUELTO A PONER LA FOTO DEL SALÓN QUE TE GUSTABA */
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop'); 
+            /* FOTO ARTÍSTICA DEL SALÓN QUE TE GUSTABA */
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?q=80&w=1974&auto=format&fit=crop'); 
             background-size: cover; 
             background-position: center; 
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; padding-top: 80px; 
@@ -79,7 +79,7 @@
         @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); } }
         .highlight-text { color: transparent; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; font-weight: bold; }
 
-        /* --- CARDS --- */
+        /* --- CARDS (SERVICIOS Y GALERÍA) --- */
         .services, .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
         .gallery-grid { margin-top: 40px; }
 
@@ -115,20 +115,19 @@
         .card-content h3 { font-size: 1.6rem; margin-bottom: 10px; } 
         .card-content p { color: var(--text-gray); font-size: 1rem; }
 
-        /* --- SLIDESHOW --- */
+        /* --- SLIDESHOW (LÓGICA) --- */
         .slideshow-container { position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px; z-index: 0; pointer-events: none; border-radius: 16px; overflow: hidden; }
         
         .slide { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
             background-size: cover; background-position: center; 
-            opacity: 0; /* Oculto */
+            opacity: 0; /* Oculto por defecto */
             transition: transform 6s linear, opacity 1s; 
         }
-        /* Primera foto siempre visible al principio */
+        /* PRIMERA FOTO SIEMPRE VISIBLE */
         .slide:first-child { opacity: 1; }
 
         /* FOTOS SERVICIOS */
-        /* Si subes tus fotos, cambia la url por: url('tu-foto.jpg') */
         .slide-b1 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); }
         .slide-b2 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000&auto=format&fit=crop'); }
         .slide-b3 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); }
@@ -138,22 +137,22 @@
         .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
         
-        /* FOTOS GALERÍA */
+        /* --- FOTOS GALERÍA (NUEVAS Y NO RECICLADAS) --- */
         
-        /* G1: Tendencias Urbanas */
-        .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop'); } 
-        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1593487568720-92097fb46089?q=80&w=2070&auto=format&fit=crop'); } 
-        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1605497788044-5a90406432b5?q=80&w=2000&auto=format&fit=crop'); } 
+        /* G1: Tendencias Urbanas (Textura y Corte Moderno) */
+        .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1520338661084-680395057c93?q=80&w=2070&auto=format&fit=crop'); } /* Estilo Textura 1 */
+        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1617260533336-d24263db444a?q=80&w=2070&auto=format&fit=crop'); } /* Estilo Textura 2 */
+        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1595152452543-e5cca283730c?q=80&w=2070&auto=format&fit=crop'); } /* Estilo Textura 3 */
         
-        /* G2: Color & Luminosidad (Intercambiadas como pediste) */
-        .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop'); } /* Chica color 1 */
-        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop'); } /* Chica 2 */
-        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); } /* Chica 3 */
+        /* G2: Color & Luminosidad (Chica Sola 1ro) */
+        .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); } /* CHICA COLOR */
+        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1629237692080-60b6ae208933?q=80&w=2070&auto=format&fit=crop'); } /* Fantasía */
+        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?q=80&w=2070&auto=format&fit=crop'); } /* Balayage */
         
-        /* G3: Perfilado & Precisión */
-        .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); } 
-        .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); } 
-        .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1517832606299-7ae9b720a186?q=80&w=1972&auto=format&fit=crop'); } 
+        /* G3: Perfilado & Precisión (Nuevos Fades Nítidos) */
+        .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=2070&auto=format&fit=crop'); } /* Fade 1 */
+        .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?q=80&w=1974&auto=format&fit=crop'); } /* Fade 2 */
+        .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1635273051937-93c4a355f2b8?q=80&w=2070&auto=format&fit=crop'); } /* Fade 3 */
 
         /* Animaciones */
         @keyframes galleryFade3 { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
@@ -308,7 +307,11 @@
         <div class="gallery-grid">
             
             <div class="gallery-card gallery-card-1">
-                <div class="slideshow-container"><div class="slide slide-g1-1"></div><div class="slide slide-g1-2"></div><div class="slide slide-g1-3"></div></div>
+                <div class="slideshow-container">
+                    <div class="slide slide-g1-1"></div>
+                    <div class="slide slide-g1-2"></div>
+                    <div class="slide slide-g1-3"></div>
+                </div>
                 <div class="card-content">
                     <h3 class="title-alive">Tendencias Urbanas</h3>
                     <p>Estilos modernos y versátiles que marcan el ritmo de la ciudad. Texturas naturales y cortes con movimiento.</p>
@@ -317,7 +320,11 @@
             </div>
 
             <div class="gallery-card gallery-card-2">
-                <div class="slideshow-container"><div class="slide slide-g2-1"></div><div class="slide slide-g2-2"></div><div class="slide slide-g2-3"></div></div>
+                <div class="slideshow-container">
+                    <div class="slide slide-g2-1"></div>
+                    <div class="slide slide-g2-2"></div>
+                    <div class="slide slide-g2-3"></div>
+                </div>
                 <div class="card-content">
                     <h3 class="title-alive">Color & Luminosidad</h3>
                     <p>Técnicas avanzadas de coloración para dar vida y brillo espectacular. Desde balayage hasta tonos vibrantes.</p>
@@ -326,7 +333,11 @@
             </div>
 
             <div class="gallery-card gallery-card-3">
-                <div class="slideshow-container"><div class="slide slide-g3-1"></div><div class="slide slide-g3-2"></div><div class="slide slide-g3-3"></div></div>
+                <div class="slideshow-container">
+                    <div class="slide slide-g3-1"></div>
+                    <div class="slide slide-g3-2"></div>
+                    <div class="slide slide-g3-3"></div>
+                </div>
                 <div class="card-content">
                     <h3 class="title-alive">Perfilado & Precisión</h3>
                     <p>Acabados impecables y líneas definidas. La excelencia en barbería para un look pulido y profesional.</p>
