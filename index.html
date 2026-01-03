@@ -12,12 +12,12 @@
             --primary: #d946ef; /* Rosa Neón */
             --secondary: #8b5cf6; /* Morado */
             --accent-blue: #3b82f6; /* Azul Neon */
-            --dark-bg: #0f0f11;
-            --card-bg: #18181b;
-            --black-bg: #000000;
+            --dark-bg: #0f0f11;     /* Fondo Principal (Muy oscuro) */
+            --card-bg: #18181b;     /* Fondo de Tarjetas (Ligeramente más claro para contraste) */
+            --black-bg: #000000;    /* Negro puro para sección de precios */
             --text-light: #f4f4f5;
             --text-gray: #a1a1aa;
-            --whatsapp-green: #25d366; /* Color oficial WA */
+            --whatsapp-green: #25d366;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -55,18 +55,20 @@
         .hero-subtitle { font-size: 1.5rem; color: var(--text-light); margin-bottom: 40px; max-width: 700px; background: rgba(255,255,255,0.05); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px); animation: fadeUp 1s ease-out 0.5s backwards; }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        /* CORRECCIÓN PROBLEMA 1: Botón Principal */
-        .btn-main { padding: 15px 45px; background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 800; cursor: pointer; text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10; white-space: nowrap; /* Evita que el texto se parta en dos */ }
+        /* Botón Principal (Corregido para móvil) */
+        .btn-main { padding: 15px 45px; background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 800; cursor: pointer; text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10; white-space: nowrap; }
         .btn-main:hover { transform: scale(1.15) rotate(-2deg); background: linear-gradient(45deg, var(--secondary), var(--primary)); box-shadow: 0 0 30px var(--primary), 0 0 60px var(--secondary); letter-spacing: 2px; }
 
-        /* --- ONDAS --- */
+        /* --- ONDAS (CORREGIDAS PARA COLOR) --- */
         .wave-container { position: absolute; bottom: 0; left: 0; width: 100%; overflow: hidden; line-height: 0; transform: rotate(180deg); }
         .wave-container svg { position: relative; display: block; width: calc(133% + 1.3px); height: 110px; }
-        .wave-container .shape-fill { fill: var(--card-bg); }
+        
         .wave-container-top { position: absolute; top: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; z-index: 1; }
         .wave-container-top svg { display: block; width: calc(100% + 1.3px); height: 90px; }
-        .wave-top-black .shape-fill { fill: var(--black-bg); }
-        .wave-top-card .shape-fill { fill: var(--card-bg); }
+        
+        /* Colores específicos para las ondas */
+        .fill-dark { fill: var(--dark-bg); }
+        .fill-black { fill: var(--black-bg); }
 
         /* --- SECCIONES --- */
         .section-pad { padding: 120px 20px; position: relative; }
@@ -75,32 +77,36 @@
         .title-alive { background: linear-gradient(90deg, #fff, var(--primary), #fff); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: breathe-glow 3s infinite ease-in-out; text-shadow: 0 0 20px rgba(217, 70, 239, 0.3); }
         @keyframes breathe-glow { 0%, 100% { background-position: 0% 50%; transform: scale(1); } 50% { background-position: 100% 50%; transform: scale(1.05); } }
 
-        .bio { background-color: var(--card-bg); position: relative; }
+        /* Fondo unificado para secciones principales */
+        .bio, .services-section, .gallery-section { background-color: var(--dark-bg); position: relative; }
+
         .bio-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; padding: 50px; border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; background: rgba(255,255,255,0.02); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: float-bio 6s ease-in-out infinite; }
         @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(139, 92, 246, 0.1); } }
         .highlight-text { color: transparent; background: linear-gradient(to right, var(--primary), var(--accent-blue)); -webkit-background-clip: text; font-weight: bold; }
 
-        .services-section { background-color: var(--card-bg); }
         .services, .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; position: relative; z-index: 2; }
         .gallery-grid { margin-top: 40px; }
 
+        /* Tarjetas con fondo ligeramente más claro para contraste */
         .service-card, .gallery-card { 
             position: relative; width: 100%; max-width: 400px; min-height: 500px; 
             display: flex; flex-direction: column; justify-content: flex-end; 
-            align-items: center; text-align: center; border-radius: 30px; background: var(--dark-bg); z-index: 1; 
+            align-items: center; text-align: center; border-radius: 30px; 
+            background: var(--card-bg); /* CORRECCIÓN DE COLOR AQUÍ */
+            z-index: 1; 
             transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.05); cursor: pointer;
         }
         .service-card:hover, .gallery-card:hover { transform: translateY(-15px) scale(1.03); box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
         
         .service-card::before, .gallery-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, var(--neon-color)); animation: rotate-border 6s linear infinite; z-index: -2; opacity: 0.6; }
-        .service-card::after, .gallery-card::after { content: ''; position: absolute; inset: 3px; background: var(--dark-bg); border-radius: 27px; z-index: -1; }
+        .service-card::after, .gallery-card::after { content: ''; position: absolute; inset: 3px; background: var(--card-bg); border-radius: 27px; z-index: -1; }
         @keyframes rotate-border { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
         .barber-card, .gallery-card-3 { --neon-color: var(--accent-blue); } 
         .salon-card, .gallery-card-2 { --neon-color: var(--primary); }
         .gallery-card-1 { --neon-color: var(--secondary); } 
 
-        .card-content { position: relative; z-index: 10; padding: 35px; background: linear-gradient(to top, var(--dark-bg) 30%, transparent); width: 100%; transition: opacity 0.4s ease; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
+        .card-content { position: relative; z-index: 10; padding: 35px; background: linear-gradient(to top, var(--card-bg) 30%, transparent); width: 100%; transition: opacity 0.4s ease; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px; }
         .service-icon { font-size: 4.5rem; margin-bottom: 20px; transition: 0.5s; display: inline-block; filter: drop-shadow(0 0 10px currentColor);}
         .barber-icon { color: var(--accent-blue); } .salon-icon { color: var(--primary); }
         .card-content h3 { font-size: 1.8rem; margin-bottom: 10px; } 
@@ -118,12 +124,15 @@
         .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
         
+        /* --- FOTOS GALERÍA (REPARADAS) --- */
         .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1520338661084-680395057c93?q=80&w=2070&auto=format&fit=crop'); } 
-        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1620332372374-f108c5cb60cc?q=80&w=2070&auto=format&fit=crop'); }
-        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1605497788044-5a90406432b5?q=80&w=2070&auto=format&fit=crop'); }
+        /* REPARADA G1-2 */ .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1504945556753-585476895f7a?q=80&w=1974&auto=format&fit=crop'); }
+        /* REPARADA G1-3 */ .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1560889272-f26534d02261?q=80&w=2070&auto=format&fit=crop'); }
+        
         .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); }
-        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1596455607563-ad6193f76b17?q=80&w=2070&auto=format&fit=crop'); }
-        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1527799820374-dcf8d9d4a388?q=80&w=2071&auto=format&fit=crop'); }
+        /* REPARADA G2-2 */ .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1523359366921-4c14294ff5a4?q=80&w=1974&auto=format&fit=crop'); }
+        /* REPARADA G2-3 */ .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?q=80&w=1974&auto=format&fit=crop'); }
+        
         .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=2070&auto=format&fit=crop'); } 
         .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2070&auto=format&fit=crop'); }
         .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1593702295094-aea8c5c13d7b?q=80&w=2000&auto=format&fit=crop'); }
@@ -148,7 +157,6 @@
 
         .gallery-title-3d { color: white; text-shadow: 1px 1px 0px #999, 2px 2px 0px #888, 3px 3px 0px #777, 4px 4px 0px #666, 5px 5px 10px rgba(0,0,0,0.8), 0 0 30px var(--secondary); animation: gallery-pulse 4s infinite ease-in-out; }
         @keyframes gallery-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); letter-spacing: 2px; } }
-        .gallery-section { background-color: var(--card-bg); }
 
         .contact-container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; }
         .contact-title-brand { background: linear-gradient(180deg, #1877f2 0%, #e1306c 40%, #222222 80%); background-size: 100% 250%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: brand-gradient-shift 6s ease-in-out infinite alternate; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); }
@@ -166,32 +174,18 @@
         .location-icon-anim { font-size: 3.5rem; margin-bottom: 20px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: bounce-pin 2s infinite; display: inline-block; filter: drop-shadow(0 0 10px var(--primary)); }
         @keyframes bounce-pin { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-15px);} 60% {transform: translateY(-8px);} }
         
-        /* CORRECCIÓN PROBLEMA 2: Estilos para el nuevo botón WA inline */
-        .btn-wa-inline {
-            display: inline-flex; align-items: center; gap: 10px;
-            margin-top: 20px; /* Espacio arriba */
-            padding: 12px 30px;
-            background-color: var(--whatsapp-green); color: white;
-            font-weight: bold; text-decoration: none; font-size: 1.1rem;
-            border-radius: 30px;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+        /* Estilos para el nuevo botón WA inline */
+        .btn-wa-inline { display: inline-flex; align-items: center; gap: 10px; margin-top: 20px; padding: 12px 30px; background-color: var(--whatsapp-green); color: white; font-weight: bold; text-decoration: none; font-size: 1.1rem; border-radius: 30px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); transition: transform 0.3s ease, box-shadow 0.3s ease; }
         .btn-wa-inline:hover { transform: scale(1.05); box-shadow: 0 0 25px rgba(37, 211, 102, 0.6); }
         .waze-btn-small { display: inline-block; margin-top: 20px; padding: 10px 25px; font-size: 1rem; font-weight: bold; border: 2px solid var(--accent-blue); border-radius: 25px; color: var(--accent-blue); text-decoration: none; transition: 0.3s; box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
         .waze-btn-small:hover { background: var(--accent-blue); color: white; box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); transform: scale(1.05); }
 
-        @keyframes flash-focus {
-            0%, 100% { box-shadow: 0 0 0 transparent; border-color: transparent; }
-            50% { box-shadow: 0 0 50px var(--highlight-color); border-color: var(--highlight-color); transform: scale(1.02); }
-        }
+        @keyframes flash-focus { 0%, 100% { box-shadow: 0 0 0 transparent; border-color: transparent; } 50% { box-shadow: 0 0 50px var(--highlight-color); border-color: var(--highlight-color); transform: scale(1.02); } }
         .flash-active { animation: flash-focus 0.5s ease-in-out 3; }
 
-        /* MEDIA QUERIES (CORRECCIÓN FINAL PARA MÓVIL) */
         @media (max-width: 768px) { 
             .navbar { padding: 10px 20px; flex-wrap: wrap; } .nav-links-container { display: none; } .btn-location { margin-left: auto; font-size: 0.8rem; padding: 8px 15px; } 
             .hero h1 { font-size: 2.8rem; letter-spacing: 2px; } .hero-subtitle { font-size: 1.1rem; padding: 15px; }
-            /* AQUÍ ESTÁ EL ARREGLO DEL BOTÓN DE PORTADA EN MÓVIL */
             .btn-main { padding: 12px 30px; font-size: 1rem; } 
             .section-pad { padding: 80px 20px; } .section-title { font-size: 2.2rem; }
             .bio-content { padding: 30px; }
@@ -235,7 +229,7 @@
         </div>
         <div class="wave-container">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill fill-dark"></path>
             </svg>
         </div>
     </section>
@@ -250,9 +244,9 @@
     </section>
 
     <section class="section-pad services-section text-center" id="servicios">
-        <div class="wave-container-top wave-top-card">
+        <div class="wave-container-top">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill fill-dark"></path>
             </svg>
         </div>
         
@@ -281,7 +275,7 @@
         
         <div class="wave-container">
              <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" style="fill: var(--black-bg)"></path>
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill fill-black"></path>
             </svg>
         </div>
     </section>
@@ -310,9 +304,9 @@
     </section>
 
     <section class="section-pad gallery-section text-center">
-        <div class="wave-container-top wave-top-black">
+        <div class="wave-container-top">
              <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill fill-black"></path>
             </svg>
         </div>
 
@@ -361,7 +355,7 @@
         </div>
         <div class="wave-container">
             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" style="fill: var(--dark-bg)"></path>
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" class="shape-fill fill-dark"></path>
             </svg>
         </div>
     </section>
