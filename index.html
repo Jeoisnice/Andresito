@@ -12,8 +12,9 @@
             --primary: #d946ef; /* Rosa Neón */
             --secondary: #8b5cf6; /* Morado */
             --accent-blue: #3b82f6; /* Azul Neon */
-            --dark-bg: #0f0f11;
-            --card-bg: #18181b;
+            --dark-bg: #0f0f11;     /* Fondo principal muy oscuro */
+            --card-bg: #18181b;     /* Fondo de tarjetas un poco más claro */
+            --black-bg: #000000;    /* Negro puro para precios */
             --text-light: #f4f4f5;
             --text-gray: #a1a1aa;
         }
@@ -23,15 +24,15 @@
         body { background-color: var(--dark-bg); color: var(--text-light); overflow-x: hidden; }
 
         /* --- NAVBAR --- */
-        .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent); backdrop-filter: blur(10px); }
+        .navbar { position: fixed; top: 0; left: 0; width: 100%; padding: 15px 40px; display: flex; justify-content: space-between; align-items: center; z-index: 1000; background: linear-gradient(to bottom, rgba(0,0,0,0.95), transparent); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.05); }
         .nav-links-container { display: flex; align-items: center; gap: 30px; }
         .nav-link { color: var(--text-light); text-decoration: none; font-weight: 600; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; transition: color 0.3s; }
-        .nav-link:hover { color: var(--primary); }
+        .nav-link:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
 
         .nav-socials { display: flex; align-items: center; gap: 10px; }
         .nav-social-btn { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.1); color: var(--text-gray); font-size: 1.1rem; text-decoration: none; transition: all 0.3s ease; }
-        .nav-fb:hover { background: #1877f2; color: white; border-color: transparent; transform: scale(1.1); }
-        .nav-ig:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; border-color: transparent; transform: scale(1.1); }
+        .nav-fb:hover { background: #1877f2; color: white; border-color: transparent; transform: scale(1.1); box-shadow: 0 0 15px #1877f2;}
+        .nav-ig:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; border-color: transparent; transform: scale(1.1); box-shadow: 0 0 15px #dc2743; }
         .nav-tt:hover { background-color: white; color: black; border-color: transparent; box-shadow: 0 0 15px rgba(255,255,255,0.5); transform: scale(1.1); }
 
         .btn-location { display: flex; align-items: center; gap: 10px; padding: 10px 20px; border-radius: 30px; text-decoration: none; color: white; font-weight: bold; background: linear-gradient(rgba(139, 92, 246, 0.8), rgba(217, 70, 239, 0.8)), url('https://mt1.google.com/vt/lyrs=m&x=10&y=10&z=5'); background-size: cover; background-position: center; border: 2px solid rgba(255,255,255,0.2); transition: 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
@@ -39,65 +40,96 @@
 
         /* --- WHATSAPP --- */
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 75px; height: 75px; font-size: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; }
-        .whatsapp-float:hover { transform: scale(1.1); }
+        .whatsapp-float:hover { transform: scale(1.1); box-shadow: 0 0 25px rgba(37, 211, 102, 0.8); }
 
-        /* --- HERO (FOTO ABSTRACTA RESTAURADA) --- */
+        /* --- HERO (Portada Abstracta) --- */
         .hero { 
-            height: 100vh; 
+            position: relative;
+            min-height: 100vh; 
             /* Foto Abstracta con humo morado y neón */
-            background: linear-gradient(rgba(0,0,0,0.5), #0f0f11), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=2070&auto=format&fit=crop'); 
+            background: linear-gradient(rgba(0,0,0,0.4), var(--dark-bg)), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=2070&auto=format&fit=crop'); 
             background-size: cover; 
-            background-position: center; 
+            background-position: center; background-attachment: fixed; /* Efecto Parallax */
             display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 20px; padding-top: 80px; 
+            overflow: hidden;
         }
         
-        .hero h1 { font-size: 4.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 900; background: linear-gradient(-45deg, #ff00cc, #3333ff, #d946ef, #00ffff); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer-text 6s ease infinite; text-shadow: 0 0 30px rgba(217, 70, 239, 0.3); }
+        .hero h1 { font-size: 4.5rem; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 20px; font-weight: 900; background: linear-gradient(-45deg, #ff00cc, #3333ff, #d946ef, #00ffff); background-size: 300% 300%; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer-text 6s ease infinite; text-shadow: 0 0 30px rgba(217, 70, 239, 0.5); }
         @keyframes shimmer-text { 0% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } 100% { background-position: 0% 50%; } }
         
         .hero-subtitle {
             font-size: 1.5rem; color: var(--text-light); margin-bottom: 40px; max-width: 700px;
-            background: rgba(0,0,0,0.4); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
+            background: rgba(255,255,255,0.05); padding: 15px 30px; border-radius: 50px; border: 1px solid rgba(255,255,255,0.1); backdrop-filter: blur(5px);
             animation: fadeUp 1s ease-out 0.5s backwards;
         }
         @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         
-        .btn-main { padding: 15px 45px; background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 800; cursor: pointer; text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(0,0,0,0.5); }
+        .btn-main { padding: 15px 45px; background: linear-gradient(45deg, var(--primary), var(--secondary)); border: none; border-radius: 50px; color: white; font-size: 1.2rem; font-weight: 800; cursor: pointer; text-decoration: none; position: relative; overflow: hidden; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); box-shadow: 0 5px 15px rgba(0,0,0,0.5); z-index: 10;}
         .btn-main:hover { transform: scale(1.15) rotate(-2deg); background: linear-gradient(45deg, var(--secondary), var(--primary)); box-shadow: 0 0 30px var(--primary), 0 0 60px var(--secondary); letter-spacing: 2px; }
 
+        /* --- DIVISORES DE ONDA (La clave para la conexión) --- */
+        .wave-container {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+        .wave-container svg {
+            position: relative;
+            display: block;
+            width: calc(133% + 1.3px);
+            height: 110px;
+        }
+        .wave-container .shape-fill { fill: var(--card-bg); } /* Conecta con el fondo de la siguiente sección */
+        
+        /* Divisor inverso para la parte superior de una sección */
+        .wave-container-top {
+             position: absolute; top: -1px; left: 0; width: 100%; overflow: hidden; line-height: 0; z-index: 1;
+        }
+        .wave-container-top svg { display: block; width: calc(100% + 1.3px); height: 90px; }
+        .wave-top-black .shape-fill { fill: var(--black-bg); } /* Para conectar con la sección negra de precios */
+        .wave-top-card .shape-fill { fill: var(--card-bg); } /* Para conectar con secciones grises */
+
         /* --- SECCIONES COMUNES --- */
-        .section-pad { padding: 100px 20px; }
+        .section-pad { padding: 120px 20px; position: relative; } /* Más padding para las ondas */
         .text-center { text-align: center; }
-        .section-title { font-size: 2.8rem; margin-bottom: 40px; display: inline-block; padding-bottom: 10px; position: relative; }
-        .title-alive { background: linear-gradient(90deg, #fff, var(--primary), #fff); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: breathe-glow 3s infinite ease-in-out; }
-        @keyframes breathe-glow { 0%, 100% { background-position: 0% 50%; transform: scale(1); filter: drop-shadow(0 0 0 transparent); } 50% { background-position: 100% 50%; transform: scale(1.05); filter: drop-shadow(0 0 10px var(--primary)); } }
+        .section-title { font-size: 2.8rem; margin-bottom: 40px; display: inline-block; padding-bottom: 10px; position: relative; z-index: 2; }
+        .title-alive { background: linear-gradient(90deg, #fff, var(--primary), #fff); background-size: 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: breathe-glow 3s infinite ease-in-out; text-shadow: 0 0 20px rgba(217, 70, 239, 0.3); }
+        @keyframes breathe-glow { 0%, 100% { background-position: 0% 50%; transform: scale(1); } 50% { background-position: 100% 50%; transform: scale(1.05); } }
 
         /* --- BIOGRAFÍA --- */
-        .bio { background-color: var(--card-bg); position: relative; overflow: hidden; }
-        .bio::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, transparent 70%); animation: pulse-bg 10s infinite; pointer-events: none; }
-        @keyframes pulse-bg { 0%, 100% { transform: scale(1); opacity: 0.5; } 50% { transform: scale(1.2); opacity: 0.8; } }
-        .bio-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; padding: 40px; border: 1px solid rgba(255,255,255,0.05); border-radius: 20px; background: rgba(0,0,0,0.3); backdrop-filter: blur(5px); box-shadow: 0 0 30px rgba(0,0,0,0.2); animation: float-bio 6s ease-in-out infinite; }
-        @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); } }
-        .highlight-text { color: transparent; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; font-weight: bold; }
+        .bio { background-color: var(--card-bg); position: relative; /* Sin overflow hidden para que se vea la onda superior */ }
+        .bio-content { max-width: 800px; margin: 0 auto; position: relative; z-index: 2; padding: 50px; border: 1px solid rgba(255,255,255,0.05); border-radius: 30px; background: rgba(255,255,255,0.02); backdrop-filter: blur(10px); box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: float-bio 6s ease-in-out infinite; }
+        @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); box-shadow: 0 30px 60px rgba(139, 92, 246, 0.1); } }
+        .highlight-text { color: transparent; background: linear-gradient(to right, var(--primary), var(--accent-blue)); -webkit-background-clip: text; font-weight: bold; text-shadow: 0 0 15px rgba(217, 70, 239, 0.2); }
 
         /* --- CARDS (SERVICIOS Y GALERÍA) --- */
-        .services, .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+        .services-section { background-color: var(--card-bg); }
+        .services, .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 50px; position: relative; z-index: 2; }
         .gallery-grid { margin-top: 40px; }
 
         .service-card, .gallery-card { 
-            position: relative; width: 100%; max-width: 450px; min-height: 450px; 
+            position: relative; width: 100%; max-width: 400px; min-height: 500px; /* Cards más altas y estilizadas */
             display: flex; flex-direction: column; justify-content: flex-end; 
             align-items: center; text-align: center; 
-            border-radius: 20px; background: var(--card-bg); z-index: 1; 
-            transition: transform 0.3s; overflow: hidden; 
+            border-radius: 30px; background: var(--dark-bg); z-index: 1; 
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+            border: 1px solid rgba(255,255,255,0.05);
         }
+        .service-card:hover, .gallery-card:hover { transform: translateY(-15px) scale(1.03); box-shadow: 0 30px 60px rgba(0,0,0,0.8); }
         
+        /* Bordes Neón Giratorios */
         .service-card::before, .gallery-card::before { 
             content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; 
             background: conic-gradient(transparent, transparent, transparent, var(--neon-color)); 
-            animation: rotate-border 9s linear infinite; z-index: -2; 
+            animation: rotate-border 6s linear infinite; z-index: -2; opacity: 0.6;
         }
         .service-card::after, .gallery-card::after { 
-            content: ''; position: absolute; inset: 4px; background: var(--card-bg); border-radius: 16px; z-index: -1; 
+            content: ''; position: absolute; inset: 3px; background: var(--dark-bg); border-radius: 27px; z-index: -1; 
         }
         @keyframes rotate-border { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
         
@@ -106,23 +138,24 @@
         .gallery-card-1 { --neon-color: var(--secondary); } 
 
         .card-content { 
-            position: relative; z-index: 10; padding: 30px; 
-            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); 
-            width: 100%; transition: opacity 0.4s ease; 
+            position: relative; z-index: 10; padding: 35px; 
+            background: linear-gradient(to top, var(--dark-bg) 30%, transparent); 
+            width: 100%; transition: opacity 0.4s ease; border-bottom-left-radius: 30px; border-bottom-right-radius: 30px;
         }
-        .service-icon { font-size: 4rem; margin-bottom: 15px; transition: 0.5s; display: inline-block;}
+        .service-icon { font-size: 4.5rem; margin-bottom: 20px; transition: 0.5s; display: inline-block; filter: drop-shadow(0 0 10px currentColor);}
         .barber-icon { color: var(--accent-blue); } .salon-icon { color: var(--primary); }
-        .card-content h3 { font-size: 1.6rem; margin-bottom: 10px; } 
-        .card-content p { color: var(--text-gray); font-size: 1rem; }
+        .card-content h3 { font-size: 1.8rem; margin-bottom: 10px; } 
+        .card-content p { color: var(--text-gray); font-size: 1.05rem; line-height: 1.6; }
 
         /* --- SLIDESHOW (LÓGICA) --- */
-        .slideshow-container { position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px; z-index: 0; pointer-events: none; border-radius: 16px; overflow: hidden; }
+        .slideshow-container { position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px; z-index: 0; pointer-events: none; border-radius: 26px; overflow: hidden; }
         
         .slide { 
             position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
             background-size: cover; background-position: center; 
             opacity: 0; /* Oculto por defecto */
             transition: transform 6s linear, opacity 1s; 
+            filter: brightness(0.8) contrast(1.1);
         }
         /* PRIMERA FOTO SIEMPRE VISIBLE */
         .slide:first-child { opacity: 1; }
@@ -137,20 +170,24 @@
         .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
         
-        /* --- FOTOS GALERÍA (NUEVAS Y NO RECICLADAS) --- */
+        /* --- FOTOS GALERÍA (CORREGIDAS Y TEMÁTICAS) --- */
         
-        /* G1: Tendencias Urbanas */
+        /* G1: Tendencias Urbanas (Textura y Corte Moderno) */
         .slide-g1-1 { background-image: url('https://images.unsplash.com/photo-1520338661084-680395057c93?q=80&w=2070&auto=format&fit=crop'); } 
-        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1617260533336-d24263db444a?q=80&w=2070&auto=format&fit=crop'); } 
-        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1595152452543-e5cca283730c?q=80&w=2070&auto=format&fit=crop'); } 
+        /* NUEVA 2: Corte crop moderno */
+        .slide-g1-2 { background-image: url('https://images.unsplash.com/photo-1595152452543-e5cca283730c?q=80&w=2070&auto=format&fit=crop'); } 
+        /* NUEVA 3: Corte con textura y diseño */
+        .slide-g1-3 { background-image: url('https://images.unsplash.com/photo-1588267691266-105379362441?q=80&w=1974&auto=format&fit=crop'); } 
         
         /* G2: Color & Luminosidad */
         .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); } 
-        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1629237692080-60b6ae208933?q=80&w=2070&auto=format&fit=crop'); } 
+        /* NUEVA 2: Color fantasía vibrante */
+        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop'); } 
         .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?q=80&w=2070&auto=format&fit=crop'); } 
         
-        /* G3: Perfilado & Precisión */
+        /* G3: Perfilado & Precisión (Temática Cuidado Hombre) */
         .slide-g3-1 { background-image: url('https://images.unsplash.com/photo-1622286342621-4bd786c2447c?q=80&w=2070&auto=format&fit=crop'); } 
+        /* NUEVA 2: Afeitado con toalla caliente / Cuidado */
         .slide-g3-2 { background-image: url('https://images.unsplash.com/photo-1534353436294-0dbd4bdac845?q=80&w=1974&auto=format&fit=crop'); } 
         .slide-g3-3 { background-image: url('https://images.unsplash.com/photo-1635273051937-93c4a355f2b8?q=80&w=2070&auto=format&fit=crop'); } 
 
@@ -158,7 +195,7 @@
         @keyframes galleryFade3 { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
         @keyframes galleryFade4 { 0% { opacity: 0; } 10% { opacity: 1; } 25% { opacity: 1; } 35% { opacity: 0; } 100% { opacity: 0; } }
         
-        .service-card:hover .slide, .gallery-card:hover .slide { transform: scale(1.1); }
+        .service-card:hover .slide, .gallery-card:hover .slide { transform: scale(1.1); filter: brightness(1) contrast(1); }
         
         /* Hover Triggers */
         .salon-card:hover .slide { animation: galleryFade3 9s infinite; } 
@@ -172,50 +209,60 @@
         .gallery-card-2:hover .slide-g2-1 { animation-delay: 0s; } .gallery-card-2:hover .slide-g2-2 { animation-delay: 3s; } .gallery-card-2:hover .slide-g2-3 { animation-delay: 6s; }
         .gallery-card-3:hover .slide-g3-1 { animation-delay: 0s; } .gallery-card-3:hover .slide-g3-2 { animation-delay: 3s; } .gallery-card-3:hover .slide-g3-3 { animation-delay: 6s; }
 
-        .hover-label { position: absolute; top: 20px; right: 20px; color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); font-size: 0.8rem; }
-        .service-card:hover .hover-label, .gallery-card:hover .hover-label { opacity: 1; }
+        .hover-label { position: absolute; top: 20px; right: 20px; color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.6); padding: 8px 18px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); font-size: 0.85rem; backdrop-filter: blur(5px); }
+        .service-card:hover .hover-label, .gallery-card:hover .hover-label { opacity: 1; transform: translateY(5px); }
 
         /* --- PRECIOS --- */
-        .pricing-section { background: #000; }
-        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
-        .pricing-column h3 { font-size: 1.8rem; margin-bottom: 25px; color: white; border-bottom: 2px solid; display: inline-block; padding-bottom: 5px; }
-        .price-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dotted rgba(255,255,255,0.2); text-decoration: none; cursor: pointer; transition: 0.3s; }
-        .price-item:hover { transform: translateX(5px); border-bottom-color: var(--primary); }
-        .price-name { font-size: 1.1rem; color: var(--text-gray); transition: color 0.3s; }
+        .pricing-section { background-color: var(--black-bg); position: relative; } /* Fondo negro puro */
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 60px; max-width: 1100px; margin: 0 auto; position: relative; z-index: 2; }
+        .pricing-column h3 { font-size: 2rem; margin-bottom: 35px; color: white; display: inline-block; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; text-shadow: 0 0 10px currentColor; }
+        
+        .price-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; padding: 15px 20px; border-radius: 15px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); text-decoration: none; cursor: pointer; transition: all 0.3s ease; }
+        .price-item:hover { transform: translateX(10px) scale(1.02); background: rgba(255,255,255,0.07); border-color: var(--primary); box-shadow: 0 0 20px rgba(217, 70, 239, 0.2); }
+        .price-name { font-size: 1.15rem; color: var(--text-gray); transition: color 0.3s; font-weight: 500; }
         .price-item:hover .price-name { color: white; }
-        .price-val { font-weight: bold; font-size: 1.2rem; color: white; }
+        .price-val { font-weight: 800; font-size: 1.3rem; color: white; text-shadow: 0 0 10px rgba(255,255,255,0.3); }
 
-        /* --- GALERÍA TÍTULO --- */
-        .gallery-title-3d { color: white; text-shadow: 1px 1px 0px #999, 2px 2px 0px #888, 3px 3px 0px #777, 4px 4px 0px #666, 5px 5px 10px rgba(0,0,0,0.8); animation: gallery-pulse 4s infinite ease-in-out; }
+        /* --- GALERÍA TÍTULO & SECCIÓN --- */
+        .gallery-title-3d { color: white; text-shadow: 1px 1px 0px #999, 2px 2px 0px #888, 3px 3px 0px #777, 4px 4px 0px #666, 5px 5px 10px rgba(0,0,0,0.8), 0 0 30px var(--secondary); animation: gallery-pulse 4s infinite ease-in-out; }
         @keyframes gallery-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); letter-spacing: 2px; } }
-        .gallery { background-color: var(--card-bg); }
+        .gallery-section { background-color: var(--card-bg); }
 
         /* --- CONTACTO --- */
-        .contact-container { max-width: 1000px; margin: 0 auto; }
+        .contact-container { max-width: 1000px; margin: 0 auto; position: relative; z-index: 2; }
         .contact-title-brand { background: linear-gradient(180deg, #1877f2 0%, #e1306c 40%, #222222 80%); background-size: 100% 250%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: brand-gradient-shift 6s ease-in-out infinite alternate; filter: drop-shadow(0 2px 5px rgba(0,0,0,0.5)); }
         @keyframes brand-gradient-shift { 0% { background-position: 0% 0%; } 100% { background-position: 0% 100%; } }
-        .social-links-big { display: flex; justify-content: center; gap: 25px; margin-bottom: 40px; }
-        .social-btn-big { width: 65px; height: 65px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 26px; text-decoration: none; transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255,255,255,0.1); }
-        .fb-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .fb-btn:hover { background: #1877f2; color: white; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(24, 119, 242, 0.5); border-color: transparent; }
-        .ig-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .ig-btn:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(220, 39, 67, 0.5); border-color: transparent; }
-        .tt-btn { background: rgba(255,255,255,0.05); color: var(--text-gray); } .tt-btn:hover { background: #ffffff; color: #000000; transform: translateY(-5px) scale(1.1); box-shadow: 0 0 20px rgba(255,255,255,0.6); border-color: transparent; }
         
-        .address-box-dynamic { position: relative; padding: 40px; margin-top: 50px; display: inline-block; background: rgba(255, 255, 255, 0.03); border-radius: 30px; overflow: hidden; transition: 0.3s; border: 1px solid rgba(255,255,255,0.1); }
-        .address-box-dynamic::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, var(--primary), transparent, var(--accent-blue)); animation: rotate-border 6s linear infinite; z-index: 0; }
-        .address-box-dynamic::after { content: ''; position: absolute; inset: 3px; background: #0f0f11; border-radius: 27px; z-index: 0; }
+        .social-links-big { display: flex; justify-content: center; gap: 30px; margin-bottom: 50px; }
+        .social-btn-big { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; text-decoration: none; transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.03); backdrop-filter: blur(5px); }
+        .fb-btn:hover { background: #1877f2; color: white; transform: translateY(-8px) scale(1.15); box-shadow: 0 0 25px rgba(24, 119, 242, 0.6); border-color: transparent; }
+        .ig-btn:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; transform: translateY(-8px) scale(1.15); box-shadow: 0 0 25px rgba(220, 39, 67, 0.6); border-color: transparent; }
+        .tt-btn:hover { background: #ffffff; color: #000000; transform: translateY(-8px) scale(1.15); box-shadow: 0 0 25px rgba(255,255,255,0.7); border-color: transparent; }
+        
+        .address-box-dynamic { position: relative; padding: 45px; margin-top: 40px; display: inline-block; background: rgba(255, 255, 255, 0.03); border-radius: 35px; overflow: hidden; transition: 0.3s; border: 1px solid rgba(255,255,255,0.05); box-shadow: 0 20px 40px rgba(0,0,0,0.3); backdrop-filter: blur(10px); }
+        .address-box-dynamic:hover { transform: translateY(-5px); box-shadow: 0 30px 60px rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.1); }
+        .address-box-dynamic::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, var(--primary), transparent, var(--accent-blue)); animation: rotate-border 8s linear infinite; z-index: 0; opacity: 0.7; }
+        .address-box-dynamic::after { content: ''; position: absolute; inset: 3px; background: var(--dark-bg); border-radius: 32px; z-index: 0; }
         .address-content { position: relative; z-index: 2; }
-        .location-icon-anim { font-size: 3rem; margin-bottom: 15px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: bounce-pin 2s infinite; display: inline-block; }
-        @keyframes bounce-pin { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-20px);} 60% {transform: translateY(-10px);} }
-        .waze-btn-small { display: inline-block; margin-top: 15px; padding: 8px 20px; font-size: 0.9rem; border: 1px solid var(--accent-blue); border-radius: 20px; color: var(--accent-blue); text-decoration: none; transition: 0.3s; }
-        .waze-btn-small:hover { background: var(--accent-blue); color: white; }
+        .location-icon-anim { font-size: 3.5rem; margin-bottom: 20px; background: linear-gradient(to bottom, var(--primary), var(--secondary)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; animation: bounce-pin 2s infinite; display: inline-block; filter: drop-shadow(0 0 10px var(--primary)); }
+        @keyframes bounce-pin { 0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 40% {transform: translateY(-15px);} 60% {transform: translateY(-8px);} }
+        .waze-btn-small { display: inline-block; margin-top: 20px; padding: 10px 25px; font-size: 1rem; font-weight: bold; border: 2px solid var(--accent-blue); border-radius: 25px; color: var(--accent-blue); text-decoration: none; transition: 0.3s; box-shadow: 0 0 15px rgba(59, 130, 246, 0.2); }
+        .waze-btn-small:hover { background: var(--accent-blue); color: white; box-shadow: 0 0 30px rgba(59, 130, 246, 0.6); transform: scale(1.05); }
 
-        @media (max-width: 768px) { .navbar { padding: 10px 20px; flex-wrap: wrap; } .nav-links-container { display: none; } .btn-location { margin-left: auto; font-size: 0.8rem; padding: 8px 15px; } .hero h1 { font-size: 2.8rem; } }
+        @media (max-width: 768px) { 
+            .navbar { padding: 10px 20px; flex-wrap: wrap; } .nav-links-container { display: none; } .btn-location { margin-left: auto; font-size: 0.8rem; padding: 8px 15px; } 
+            .hero h1 { font-size: 2.8rem; letter-spacing: 2px; } .hero-subtitle { font-size: 1.1rem; padding: 15px; }
+            .section-pad { padding: 80px 20px; } .section-title { font-size: 2.2rem; }
+            .bio-content { padding: 30px; }
+            .service-card, .gallery-card { min-height: 400px; }
+            .pricing-grid { gap: 30px; }
+        }
     </style>
 </head>
 <body>
 
     <nav class="navbar">
-        <div style="font-weight:900; font-size:1.5rem; color:white; letter-spacing: 2px;">EE.</div>
+        <div style="font-weight:900; font-size:1.5rem; color:white; letter-spacing: 2px; text-shadow: 0 0 10px var(--primary);">EE.</div>
         <div class="nav-links-container">
             <a href="#inicio" class="nav-link">Inicio</a>
             <a href="#servicios" class="nav-link">Servicios</a>
@@ -238,32 +285,43 @@
     </a>
 
     <section class="hero" id="inicio">
-        <div class="hero-content">
+        <div class="hero-content" style="position: relative; z-index: 2;">
             <h1>Estudio Etéreo</h1>
             <p class="hero-subtitle">
-                Donde tu estilo <span style="color:var(--primary); font-weight:bold;">cobra vida</span>. Barbería de precisión y salón de alta estética.
+                Donde tu estilo <span style="color:var(--primary); font-weight:bold; text-shadow: 0 0 10px var(--primary);">cobra vida</span>. Barbería de precisión y salón de alta estética.
             </p>
             <a href="https://wa.me/50766690578?text=Hola%20Estudio%20Etéreo,%20quisiera%20reservar%20una%20cita%20📅" target="_blank" class="btn-main">Reservar Cita</a>
+        </div>
+        <div class="wave-container">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
         </div>
     </section>
 
     <section class="section-pad bio text-center">
         <div class="bio-content">
-            <h2 class="section-title" style="border-bottom: 2px solid var(--secondary);">Nuestra Esencia</h2>
-            <p style="font-size: 1.15rem; line-height: 1.9; color: var(--text-light); text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
+            <h2 class="section-title title-alive">Nuestra Esencia</h2>
+            <p style="font-size: 1.2rem; line-height: 2; color: var(--text-light); text-shadow: 0 2px 4px rgba(0,0,0,0.5);">
                 Somos un espacio creativo dedicado a la <span class="highlight-text">belleza moderna</span>. En Estudio Etéreo fusionamos las <span class="highlight-text">técnicas clásicas</span> de barbería con las <span class="highlight-text">tendencias más virales</span> de color y estilismo.
             </p>
         </div>
     </section>
 
-    <section class="section-pad text-center" id="servicios">
+    <section class="section-pad services-section text-center" id="servicios">
+        <div class="wave-container-top wave-top-card">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+        
         <h2 class="section-title title-alive">Nuestros Mundos</h2>
         <div class="services">
             <div class="service-card barber-card">
                 <div class="slideshow-container"><div class="slide slide-b1"></div> <div class="slide slide-b2"></div> <div class="slide slide-b3"></div> <div class="slide slide-b4"></div></div>
                 <div class="card-content">
                     <i class="fa-solid fa-scissors service-icon barber-icon"></i>
-                    <h3 class="title-alive">Zona Barbería</h3>
+                    <h3 class="title-alive" style="--primary: var(--accent-blue)">Zona Barbería</h3>
                     <p>Cortes Fade, arreglos de barba con toalla caliente, perfilado de cejas y Buzz Cuts modernos.</p>
                 </div>
                 <div class="hover-label">Ver Catálogo</div>
@@ -278,13 +336,19 @@
                 <div class="hover-label">Ver Catálogo</div>
             </div>
         </div>
+        
+        <div class="wave-container">
+             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" style="fill: var(--black-bg)"></path>
+            </svg>
+        </div>
     </section>
 
     <section class="section-pad pricing-section text-center" id="precios">
-        <h2 class="section-title" style="border-bottom: 2px solid #fff;">Inversión en Ti</h2>
+        <h2 class="section-title" style="color: white; text-shadow: 0 0 20px rgba(255,255,255,0.5);">Inversión en Ti</h2>
         <div class="pricing-grid">
             <div class="pricing-column">
-                <h3 style="border-color: var(--accent-blue);">Menú Barbería</h3>
+                <h3 style="color: var(--accent-blue); text-shadow: 0 0 15px var(--accent-blue);">Menú Barbería</h3>
                 <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20un%20Corte%20Clásico%20/%20Fade" target="_blank" class="price-item"><span class="price-name">Corte Clásico / Fade</span><span class="price-val">$15.00</span></a>
                 <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20Barba%20&%20Toalla%20Caliente" target="_blank" class="price-item"><span class="price-name">Barba & Toalla Caliente</span><span class="price-val">$12.00</span></a>
                 <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20Perfilado%20de%20Cejas" target="_blank" class="price-item"><span class="price-name">Perfilado de Cejas</span><span class="price-val">$8.00</span></a>
@@ -292,7 +356,7 @@
                 <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20un%20Diseño%20Tribal" target="_blank" class="price-item"><span class="price-name">Diseño Tribal</span><span class="price-val">+$5.00</span></a>
             </div>
             <div class="pricing-column">
-                <h3 style="border-color: var(--primary);">Menú Salón</h3>
+                <h3 style="color: var(--primary); text-shadow: 0 0 15px var(--primary);">Menú Salón</h3>
                 <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20un%20Corte%20de%20Dama" target="_blank" class="price-item"><span class="price-name">Corte de Dama</span><span class="price-val">$20.00</span></a>
                 <a href="https://wa.me/50766690578?text=Hola,%20quisiera%20cotizar%20Balayage%20/%20Mechas" target="_blank" class="price-item"><span class="price-name">Balayage / Mechas</span><span class="price-val">$80.00+</span></a>
                 <a href="https://wa.me/50766690578?text=Hola,%20quisiera%20cotizar%20un%20Tinte%20Completo" target="_blank" class="price-item"><span class="price-name">Tinte Completo</span><span class="price-val">$50.00+</span></a>
@@ -302,19 +366,23 @@
         </div>
     </section>
 
-    <section class="section-pad gallery text-center">
+    <section class="section-pad gallery-section text-center">
+        <div class="wave-container-top wave-top-black">
+             <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+
         <h2 class="section-title gallery-title-3d">Galería de Estilos</h2>
         <div class="gallery-grid">
             
             <div class="gallery-card gallery-card-1">
                 <div class="slideshow-container">
                     <div class="slide slide-g1-1"></div>
-                    <div class="slide slide-g1-2"></div>
-                    <div class="slide slide-g1-3"></div>
-                </div>
+                    <div class="slide slide-g1-2"></div> <div class="slide slide-g1-3"></div> </div>
                 <div class="card-content">
-                    <h3 class="title-alive">Tendencias Urbanas</h3>
-                    <p>Estilos modernos y versátiles que marcan el ritmo de la ciudad. Texturas naturales y cortes con movimiento.</p>
+                    <h3 class="title-alive" style="--primary: var(--secondary)">Tendencias Urbanas</h3>
+                    <p>Estilos modernos y versátiles. Texturas naturales, cortes crop y diseños con movimiento.</p>
                 </div>
                 <div class="hover-label">Ver Más</div>
             </div>
@@ -322,12 +390,11 @@
             <div class="gallery-card gallery-card-2">
                 <div class="slideshow-container">
                     <div class="slide slide-g2-1"></div>
-                    <div class="slide slide-g2-2"></div>
-                    <div class="slide slide-g2-3"></div>
+                    <div class="slide slide-g2-2"></div> <div class="slide slide-g2-3"></div>
                 </div>
                 <div class="card-content">
                     <h3 class="title-alive">Color & Luminosidad</h3>
-                    <p>Técnicas avanzadas de coloración para dar vida y brillo espectacular. Desde balayage hasta tonos vibrantes.</p>
+                    <p>Técnicas avanzadas de coloración. Desde balayage sutil hasta tonos fantasía vibrantes.</p>
                 </div>
                 <div class="hover-label">Ver Más</div>
             </div>
@@ -335,16 +402,20 @@
             <div class="gallery-card gallery-card-3">
                 <div class="slideshow-container">
                     <div class="slide slide-g3-1"></div>
-                    <div class="slide slide-g3-2"></div>
-                    <div class="slide slide-g3-3"></div>
+                    <div class="slide slide-g3-2"></div> <div class="slide slide-g3-3"></div>
                 </div>
                 <div class="card-content">
-                    <h3 class="title-alive">Perfilado & Precisión</h3>
-                    <p>Acabados impecables y líneas definidas. La excelencia en barbería para un look pulido y profesional.</p>
+                    <h3 class="title-alive" style="--primary: var(--accent-blue)">Perfilado & Precisión</h3>
+                    <p>Acabados impecables con navaja y ritual de toalla caliente. La excelencia en cuidado masculino.</p>
                 </div>
                 <div class="hover-label">Ver Más</div>
             </div>
 
+        </div>
+        <div class="wave-container">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M985.66,92.83C906.67,72,823.78,31,743.84,14.19c-82.26-17.34-168.06-16.33-250.45.39-57.84,11.73-114,31.07-172,41.86A600.21,600.21,0,0,1,0,27.35V120H1200V95.8C1132.19,118.92,1055.71,111.31,985.66,92.83Z" style="fill: var(--dark-bg)"></path>
+            </svg>
         </div>
     </section>
 
@@ -360,13 +431,13 @@
             <div class="address-content">
                 <i class="fa-solid fa-location-dot location-icon-anim"></i>
                 <h3>Ubicación Estratégica</h3>
-                <p style="margin-top: 10px; color: var(--text-gray);">Costado del Restaurante Waikiki</p>
-                <p style="margin-top: 5px; font-weight: bold; color: white;">Tel: 6669-0578</p>
+                <p style="margin-top: 10px; color: var(--text-gray); font-size: 1.1rem;">Costado del Restaurante Waikiki</p>
+                <p style="margin-top: 5px; font-weight: bold; color: white; font-size: 1.2rem;">Tel: 6669-0578</p>
                 <a href="https://waze.com/ul?ll=9.007902193808969,-79.50571668557593&navigate=yes" target="_blank" class="waze-btn-small">Ir ahora</a>
             </div>
         </div>
 
-        <p style="margin-top: 50px; font-size: 0.9rem; color: #555;">© 2024 Estudio Etéreo. Todos los derechos reservados.</p>
+        <p style="margin-top: 80px; font-size: 0.9rem; color: #555;">© 2024 Estudio Etéreo. Todos los derechos reservados.</p>
     </section>
 
 </body>
