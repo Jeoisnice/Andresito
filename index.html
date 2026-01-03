@@ -42,8 +42,7 @@
         .whatsapp-float { position: fixed; bottom: 30px; right: 30px; background-color: #25d366; color: white; width: 75px; height: 75px; font-size: 38px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4); z-index: 1000; text-decoration: none; transition: transform 0.3s ease; }
         .whatsapp-float:hover { transform: scale(1.1); }
 
-        /* --- HERO (NUEVA IMAGEN EN ARMONÍA) --- */
-        /* Usamos un fondo abstracto oscuro con tonos morados/magentas para combinar con el sitio */
+        /* --- HERO --- */
         .hero { 
             height: 100vh; 
             background: linear-gradient(rgba(0,0,0,0.5), #0f0f11), url('https://images.unsplash.com/photo-1618331835717-801e976710b2?q=80&w=2070&auto=format&fit=crop'); 
@@ -108,14 +107,24 @@
         .hover-label { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); }
         .service-card:hover .hover-label { opacity: 1; }
 
-        /* --- PRECIOS --- */
+        /* --- PRECIOS INTERACTIVOS (LINKS DE WHATSAPP) --- */
         .pricing-section { background: #000; }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
         .pricing-column h3 { font-size: 1.8rem; margin-bottom: 25px; color: white; border-bottom: 2px solid; display: inline-block; padding-bottom: 5px; }
-        .price-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dotted rgba(255,255,255,0.2); transition: 0.3s; }
+        
+        .price-item { 
+            display: flex; justify-content: space-between; align-items: center; 
+            margin-bottom: 20px; padding-bottom: 10px; 
+            border-bottom: 1px dotted rgba(255,255,255,0.2); 
+            text-decoration: none; /* Quitamos subrayado */
+            cursor: pointer; /* Manito al pasar mouse */
+            transition: 0.3s; 
+        }
         .price-item:hover { transform: translateX(5px); border-bottom-color: var(--primary); }
-        .price-name { font-size: 1.1rem; color: var(--text-gray); }
+        
+        .price-name { font-size: 1.1rem; color: var(--text-gray); transition: color 0.3s; }
         .price-item:hover .price-name { color: white; }
+        
         .price-val { font-weight: bold; font-size: 1.2rem; color: white; }
 
         /* --- GALERÍA VIVA --- */
@@ -201,7 +210,7 @@
             <p class="hero-subtitle">
                 Donde tu estilo <span style="color:var(--primary); font-weight:bold;">cobra vida</span>. Barbería de precisión y salón de alta estética.
             </p>
-            <a href="#contacto" class="btn-main">Reservar Cita</a>
+            <a href="https://wa.me/50766690578?text=Hola%20Estudio%20Etéreo,%20quisiera%20reservar%20una%20cita%20📅" target="_blank" class="btn-main">Reservar Cita</a>
         </div>
     </section>
 
@@ -240,22 +249,23 @@
 
     <section class="section-pad pricing-section text-center" id="precios">
         <h2 class="section-title" style="border-bottom: 2px solid #fff;">Inversión en Ti</h2>
+        
         <div class="pricing-grid">
             <div class="pricing-column">
                 <h3 style="border-color: var(--accent-blue);">Menú Barbería</h3>
-                <div class="price-item"><span class="price-name">Corte Clásico / Fade</span><span class="price-val">$15.00</span></div>
-                <div class="price-item"><span class="price-name">Barba & Toalla Caliente</span><span class="price-val">$12.00</span></div>
-                <div class="price-item"><span class="price-name">Perfilado de Cejas</span><span class="price-val">$8.00</span></div>
-                <div class="price-item"><span class="price-name">Corte + Barba (Combo)</span><span class="price-val">$25.00</span></div>
-                <div class="price-item"><span class="price-name">Diseño Tribal</span><span class="price-val">+$5.00</span></div>
+                <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20un%20Corte%20Clásico%20/%20Fade" target="_blank" class="price-item"><span class="price-name">Corte Clásico / Fade</span><span class="price-val">$15.00</span></a>
+                <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20Barba%20&%20Toalla%20Caliente" target="_blank" class="price-item"><span class="price-name">Barba & Toalla Caliente</span><span class="price-val">$12.00</span></a>
+                <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20Perfilado%20de%20Cejas" target="_blank" class="price-item"><span class="price-name">Perfilado de Cejas</span><span class="price-val">$8.00</span></a>
+                <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20Combo%20Corte%20+%20Barba" target="_blank" class="price-item"><span class="price-name">Corte + Barba (Combo)</span><span class="price-val">$25.00</span></a>
+                <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20un%20Diseño%20Tribal" target="_blank" class="price-item"><span class="price-name">Diseño Tribal</span><span class="price-val">+$5.00</span></a>
             </div>
             <div class="pricing-column">
                 <h3 style="border-color: var(--primary);">Menú Salón</h3>
-                <div class="price-item"><span class="price-name">Corte de Dama</span><span class="price-val">$20.00</span></div>
-                <div class="price-item"><span class="price-name">Balayage / Mechas</span><span class="price-val">$80.00+</span></div>
-                <div class="price-item"><span class="price-name">Tinte Completo</span><span class="price-val">$50.00+</span></div>
-                <div class="price-item"><span class="price-name">Hidratación Profunda</span><span class="price-val">$35.00</span></div>
-                <div class="price-item"><span class="price-name">Maquillaje Social</span><span class="price-val">$45.00</span></div>
+                <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20un%20Corte%20de%20Dama" target="_blank" class="price-item"><span class="price-name">Corte de Dama</span><span class="price-val">$20.00</span></a>
+                <a href="https://wa.me/50766690578?text=Hola,%20quisiera%20cotizar%20Balayage%20/%20Mechas" target="_blank" class="price-item"><span class="price-name">Balayage / Mechas</span><span class="price-val">$80.00+</span></a>
+                <a href="https://wa.me/50766690578?text=Hola,%20quisiera%20cotizar%20un%20Tinte%20Completo" target="_blank" class="price-item"><span class="price-name">Tinte Completo</span><span class="price-val">$50.00+</span></a>
+                <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20Hidratación%20Profunda" target="_blank" class="price-item"><span class="price-name">Hidratación Profunda</span><span class="price-val">$35.00</span></a>
+                <a href="https://wa.me/50766690578?text=Hola,%20me%20interesa%20agendar%20Maquillaje%20Social" target="_blank" class="price-item"><span class="price-name">Maquillaje Social</span><span class="price-val">$45.00</span></a>
             </div>
         </div>
     </section>
