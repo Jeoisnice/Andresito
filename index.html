@@ -79,19 +79,50 @@
         @keyframes float-bio { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); box-shadow: 0 10px 40px rgba(139, 92, 246, 0.2); } }
         .highlight-text { color: transparent; background: linear-gradient(to right, var(--primary), var(--secondary)); -webkit-background-clip: text; font-weight: bold; }
 
-        /* --- SERVICIOS --- */
-        .services { display: flex; flex-wrap: wrap; justify-content: center; gap: 60px; }
-        .service-card { position: relative; width: 100%; max-width: 500px; min-height: 400px; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; border-radius: 20px; background: var(--card-bg); z-index: 1; transition: transform 0.3s; overflow: hidden; }
-        .service-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: conic-gradient(transparent, transparent, transparent, var(--neon-color)); animation: rotate-border 9s linear infinite; z-index: -2; }
-        .service-card::after { content: ''; position: absolute; inset: 4px; background: var(--card-bg); border-radius: 16px; z-index: -1; }
+        /* --- SERVICIOS Y GALERÍA (CARDS) --- */
+        .services, .gallery-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; }
+        .gallery-grid { margin-top: 40px; }
+
+        .service-card, .gallery-card { 
+            position: relative; width: 100%; max-width: 450px; min-height: 450px; 
+            display: flex; flex-direction: column; justify-content: flex-end; /* Texto abajo */
+            align-items: center; text-align: center; 
+            border-radius: 20px; background: var(--card-bg); z-index: 1; 
+            transition: transform 0.3s; overflow: hidden; 
+        }
+        .service-card::before, .gallery-card::before { 
+            content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; 
+            background: conic-gradient(transparent, transparent, transparent, var(--neon-color)); 
+            animation: rotate-border 9s linear infinite; z-index: -2; 
+        }
+        .service-card::after, .gallery-card::after { 
+            content: ''; position: absolute; inset: 4px; background: var(--card-bg); border-radius: 16px; z-index: -1; 
+        }
         @keyframes rotate-border { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
-        .barber-card { --neon-color: var(--accent-blue); } .salon-card { --neon-color: var(--primary); }
-        .card-content { position: relative; z-index: 10; padding: 40px; transition: opacity 0.4s ease; }
-        .service-icon { font-size: 5rem; margin-bottom: 25px; transition: 0.5s; display: inline-block;}
+        
+        /* Colores de Neón */
+        .barber-card { --neon-color: var(--accent-blue); } 
+        .salon-card { --neon-color: var(--primary); }
+        .gallery-card-1 { --neon-color: var(--secondary); } /* Morado */
+        .gallery-card-2 { --neon-color: var(--primary); } /* Rosa */
+        .gallery-card-3 { --neon-color: var(--accent-blue); } /* Azul */
+
+        .card-content { 
+            position: relative; z-index: 10; padding: 30px; 
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); /* Fondo oscuro para leer */
+            width: 100%; transition: opacity 0.4s ease; 
+        }
+        .service-icon { font-size: 4rem; margin-bottom: 15px; transition: 0.5s; display: inline-block;}
         .barber-icon { color: var(--accent-blue); } .salon-icon { color: var(--primary); }
-        .service-card h3 { font-size: 1.8rem; margin-bottom: 15px; } .service-card p { color: var(--text-gray); font-size: 1.1rem; }
+        
+        .card-content h3 { font-size: 1.6rem; margin-bottom: 10px; } 
+        .card-content p { color: var(--text-gray); font-size: 1rem; }
+
+        /* Slideshow */
         .slideshow-container { position: absolute; top: 4px; left: 4px; right: 4px; bottom: 4px; z-index: 0; pointer-events: none; border-radius: 16px; overflow: hidden; }
-        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: transform 6s linear; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; opacity: 0; transition: transform 6s linear, opacity 1s; }
+
+        /* FOTOS SERVICIOS */
         .slide-b1 { background-image: url('https://images.unsplash.com/photo-1599351431202-1e0f0137899a?q=80&w=2000&auto=format&fit=crop'); }
         .slide-b2 { background-image: url('https://images.unsplash.com/photo-1621605815971-fbc98d665033?q=80&w=2000&auto=format&fit=crop'); }
         .slide-b3 { background-image: url('https://images.unsplash.com/photo-1503951914875-452162b7f30a?q=80&w=2000&auto=format&fit=crop'); }
@@ -99,43 +130,57 @@
         .slide-s1 { background-image: url('https://images.unsplash.com/photo-1560869713-7d0a29430803?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s2 { background-image: url('https://images.unsplash.com/photo-1512496015851-a90fb38ba796?q=80&w=2000&auto=format&fit=crop'); } 
         .slide-s3 { background-image: url('https://images.unsplash.com/photo-1632345031435-8727f6897d53?q=80&w=2000&auto=format&fit=crop'); } 
+        
+        /* FOTOS GALERÍA (NUEVAS) */
+        /* G1: Tendencias Urbanas */
+        .slide-g1-1 { background-image: url('https://i.pinimg.com/564x/11/66/45/11664511451166451145116645114511.jpg'); } /* image_5.png */
+        .slide-g1-2 { background-image: url('https://i.pinimg.com/564x/22/77/56/22775622775622775622775622775622.jpg'); } /* image_6.png */
+        .slide-g1-3 { background-image: url('https://i.pinimg.com/564x/33/88/67/33886733886733886733886733886733.jpg'); } /* image_7.png */
+        /* G2: Color & Luminosidad */
+        .slide-g2-1 { background-image: url('https://images.unsplash.com/photo-1580618672591-eb180b1a973f?q=80&w=2069&auto=format&fit=crop'); } /* Balayage */
+        .slide-g2-2 { background-image: url('https://images.unsplash.com/photo-1608245449230-407a28e80200?q=80&w=1974&auto=format&fit=crop'); } /* Pelo Rosa */
+        .slide-g2-3 { background-image: url('https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?q=80&w=1976&auto=format&fit=crop'); } /* Rubio */
+        /* G3: Perfilado & Precisión */
+        .slide-g3-1 { background-image: url('https://i.pinimg.com/564x/44/99/78/44997844997844997844997844997844.jpg'); } /* image_8.png */
+        .slide-g3-2 { background-image: url('https://i.pinimg.com/564x/55/00/89/55008955008955008955008955008955.jpg'); } /* image_9.png */
+        .slide-g3-3 { background-image: url('https://i.pinimg.com/564x/66/11/90/66119066119066119066119066119066.jpg'); } /* image_10.png */
+
+        /* Animaciones del Slideshow */
         @keyframes galleryFade3 { 0% { opacity: 0; } 10% { opacity: 1; } 33% { opacity: 1; } 43% { opacity: 0; } 100% { opacity: 0; } }
         @keyframes galleryFade4 { 0% { opacity: 0; } 10% { opacity: 1; } 25% { opacity: 1; } 35% { opacity: 0; } 100% { opacity: 0; } }
-        .service-card:hover .card-content { opacity: 0; } .service-card:hover .slide { transform: scale(1.1); }
-        .salon-card:hover .slide { animation: galleryFade3 9s infinite; } .salon-card:hover .slide-s1 { animation-delay: 0s; } .salon-card:hover .slide-s2 { animation-delay: 3s; } .salon-card:hover .slide-s3 { animation-delay: 6s; }
-        .barber-card:hover .slide { animation: galleryFade4 12s infinite; } .barber-card:hover .slide-b1 { animation-delay: 0s; } .barber-card:hover .slide-b2 { animation-delay: 3s; } .barber-card:hover .slide-b3 { animation-delay: 6s; } .barber-card:hover .slide-b4 { animation-delay: 9s; }
-        .hover-label { position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%); color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 2px; background: rgba(0,0,0,0.6); padding: 8px 20px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); }
-        .service-card:hover .hover-label { opacity: 1; }
+        
+        /* Triggers Hover */
+        .service-card:hover .slide, .gallery-card:hover .slide { transform: scale(1.1); }
+        
+        /* Servicios */
+        .salon-card:hover .slide { animation: galleryFade3 9s infinite; } 
+        .salon-card:hover .slide-s1 { animation-delay: 0s; } .salon-card:hover .slide-s2 { animation-delay: 3s; } .salon-card:hover .slide-s3 { animation-delay: 6s; }
+        .barber-card:hover .slide { animation: galleryFade4 12s infinite; } 
+        .barber-card:hover .slide-b1 { animation-delay: 0s; } .barber-card:hover .slide-b2 { animation-delay: 3s; } .barber-card:hover .slide-b3 { animation-delay: 6s; } .barber-card:hover .slide-b4 { animation-delay: 9s; }
+        
+        /* Galería */
+        .gallery-card:hover .slide { animation: galleryFade3 9s infinite; }
+        .gallery-card-1:hover .slide-g1-1 { animation-delay: 0s; } .gallery-card-1:hover .slide-g1-2 { animation-delay: 3s; } .gallery-card-1:hover .slide-g1-3 { animation-delay: 6s; }
+        .gallery-card-2:hover .slide-g2-1 { animation-delay: 0s; } .gallery-card-2:hover .slide-g2-2 { animation-delay: 3s; } .gallery-card-2:hover .slide-g2-3 { animation-delay: 6s; }
+        .gallery-card-3:hover .slide-g3-1 { animation-delay: 0s; } .gallery-card-3:hover .slide-g3-2 { animation-delay: 3s; } .gallery-card-3:hover .slide-g3-3 { animation-delay: 6s; }
 
-        /* --- PRECIOS INTERACTIVOS (LINKS DE WHATSAPP) --- */
+        .hover-label { position: absolute; top: 20px; right: 20px; color: white; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; background: rgba(0,0,0,0.6); padding: 5px 15px; border-radius: 20px; opacity: 0; transition: 0.3s; z-index: 20; border: 1px solid rgba(255,255,255,0.3); font-size: 0.8rem; }
+        .service-card:hover .hover-label, .gallery-card:hover .hover-label { opacity: 1; }
+
+        /* --- PRECIOS --- */
         .pricing-section { background: #000; }
         .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; max-width: 1000px; margin: 0 auto; }
         .pricing-column h3 { font-size: 1.8rem; margin-bottom: 25px; color: white; border-bottom: 2px solid; display: inline-block; padding-bottom: 5px; }
-        
-        .price-item { 
-            display: flex; justify-content: space-between; align-items: center; 
-            margin-bottom: 20px; padding-bottom: 10px; 
-            border-bottom: 1px dotted rgba(255,255,255,0.2); 
-            text-decoration: none; /* Quitamos subrayado */
-            cursor: pointer; /* Manito al pasar mouse */
-            transition: 0.3s; 
-        }
+        .price-item { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; padding-bottom: 10px; border-bottom: 1px dotted rgba(255,255,255,0.2); text-decoration: none; cursor: pointer; transition: 0.3s; }
         .price-item:hover { transform: translateX(5px); border-bottom-color: var(--primary); }
-        
         .price-name { font-size: 1.1rem; color: var(--text-gray); transition: color 0.3s; }
         .price-item:hover .price-name { color: white; }
-        
         .price-val { font-weight: bold; font-size: 1.2rem; color: white; }
 
-        /* --- GALERÍA VIVA --- */
+        /* --- GALERÍA TÍTULO --- */
+        .gallery { background-color: var(--card-bg); }
         .gallery-title-3d { color: white; text-shadow: 1px 1px 0px #999, 2px 2px 0px #888, 3px 3px 0px #777, 4px 4px 0px #666, 5px 5px 10px rgba(0,0,0,0.8); animation: gallery-pulse 4s infinite ease-in-out; }
         @keyframes gallery-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.03); letter-spacing: 2px; } }
-        .gallery { background-color: var(--card-bg); }
-        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; padding: 40px 0; max-width: 1200px; margin: 0 auto; }
-        .gallery-item { height: 400px; border-radius: 15px; overflow: hidden; position: relative; box-shadow: 0 10px 20px rgba(0,0,0,0.5); border: 1px solid rgba(255,255,255,0.1); }
-        .gallery-item img { width: 100%; height: 100%; object-fit: cover; filter: grayscale(80%) contrast(1.1); transition: all 0.5s ease; animation: pan-image 15s infinite alternate linear; }
-        .gallery-item:hover img { filter: grayscale(0%) contrast(1.2) brightness(1.1); transform: scale(1.2); animation-play-state: paused; }
-        @keyframes pan-image { 0% { transform: scale(1.1) translate(0, 0); } 50% { transform: scale(1.25) translate(-2%, -2%); } 100% { transform: scale(1.1) translate(2%, 2%); } }
 
         /* --- CONTACTO --- */
         .contact-container { max-width: 1000px; margin: 0 auto; }
@@ -230,7 +275,7 @@
                 <div class="slideshow-container"><div class="slide slide-b1"></div> <div class="slide slide-b2"></div> <div class="slide slide-b3"></div> <div class="slide slide-b4"></div></div>
                 <div class="card-content">
                     <i class="fa-solid fa-scissors service-icon barber-icon"></i>
-                    <h3>Zona Barbería</h3>
+                    <h3 class="title-alive">Zona Barbería</h3>
                     <p>Cortes Fade, arreglos de barba con toalla caliente, perfilado de cejas y Buzz Cuts modernos.</p>
                 </div>
                 <div class="hover-label">Ver Catálogo</div>
@@ -239,7 +284,7 @@
                 <div class="slideshow-container"><div class="slide slide-s1"></div> <div class="slide slide-s2"></div> <div class="slide slide-s3"></div></div>
                 <div class="card-content">
                     <i class="fa-solid fa-wand-magic-sparkles service-icon salon-icon"></i>
-                    <h3>Estudio de Belleza</h3>
+                    <h3 class="title-alive">Estudio de Belleza</h3>
                     <p>Colorimetría, balayage, tratamientos de hidratación profunda y maquillaje para eventos.</p>
                 </div>
                 <div class="hover-label">Ver Catálogo</div>
@@ -249,7 +294,6 @@
 
     <section class="section-pad pricing-section text-center" id="precios">
         <h2 class="section-title" style="border-bottom: 2px solid #fff;">Inversión en Ti</h2>
-        
         <div class="pricing-grid">
             <div class="pricing-column">
                 <h3 style="border-color: var(--accent-blue);">Menú Barbería</h3>
@@ -273,9 +317,34 @@
     <section class="section-pad gallery text-center">
         <h2 class="section-title gallery-title-3d">Galería de Estilos</h2>
         <div class="gallery-grid">
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=1974&auto=format&fit=crop" alt="Estilo Hombre"><div style="position:absolute; bottom:10px; left:10px; font-weight:bold; text-shadow:0 2px 4px black;">Cortes Urbanos</div></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?q=80&w=1964&auto=format&fit=crop" alt="Estilo Mujer"><div style="position:absolute; bottom:10px; left:10px; font-weight:bold; text-shadow:0 2px 4px black;">Color & Brillo</div></div>
-            <div class="gallery-item"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=1974&auto=format&fit=crop" alt="Estilo Elegante"><div style="position:absolute; bottom:10px; left:10px; font-weight:bold; text-shadow:0 2px 4px black;">Perfilado Ejecutivo</div></div>
+            
+            <div class="gallery-card gallery-card-1">
+                <div class="slideshow-container"><div class="slide slide-g1-1"></div><div class="slide slide-g1-2"></div><div class="slide slide-g1-3"></div></div>
+                <div class="card-content">
+                    <h3 class="title-alive">Tendencias Urbanas</h3>
+                    <p>Estilos modernos y versátiles que marcan el ritmo de la ciudad. Texturas naturales y cortes con movimiento.</p>
+                </div>
+                <div class="hover-label">Ver Más</div>
+            </div>
+
+            <div class="gallery-card gallery-card-2">
+                <div class="slideshow-container"><div class="slide slide-g2-1"></div><div class="slide slide-g2-2"></div><div class="slide slide-g2-3"></div></div>
+                <div class="card-content">
+                    <h3 class="title-alive">Color & Luminosidad</h3>
+                    <p>Técnicas avanzadas de coloración para dar vida y brillo espectacular a tu cabello. Desde balayage sutil hasta tonos vibrantes.</p>
+                </div>
+                <div class="hover-label">Ver Más</div>
+            </div>
+
+            <div class="gallery-card gallery-card-3">
+                <div class="slideshow-container"><div class="slide slide-g3-1"></div><div class="slide slide-g3-2"></div><div class="slide slide-g3-3"></div></div>
+                <div class="card-content">
+                    <h3 class="title-alive">Perfilado & Precisión</h3>
+                    <p>Acabados impecables y líneas definidas. La excelencia en barbería para un look pulido y profesional.</p>
+                </div>
+                <div class="hover-label">Ver Más</div>
+            </div>
+
         </div>
     </section>
 
